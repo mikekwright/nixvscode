@@ -11,7 +11,574 @@
     ./avante.nix
   ];
 
-  vscodeSettings = {};
+  vscodeSettings = {
+    "zenMode.fullScreen" = true;
+    "zenMode.centerLayout" = true;
+    "zenMode.hideLineNumbers" = false;
+    "zenMode.hideActivityBar" = true;
+    "zenMode.hideStatusBar" = true;
+    "explorer.excludeGitIgnore" = true;
+    "editor.insertSpaces" = true;
+    "editor.detectIndentation" = false;
+    "workbench.iconTheme" = "file-icons";
+    "workbench.editor.enablePreview" = false;
+    "files.exclude" = {
+      "**/__pycache__" = true;
+      "**/node_modules" = true;
+      "**/*.sw?" = true;
+    };
+    "terminal.integrated.commandsToSkipShell" = [
+      "workbench.action.navigateRight"
+      "workbench.action.navigateLeft"
+      "workbench.action.navigateUp"
+      "workbench.action.navigateDown"
+      "workbench.action.focusActiveEditorGroup"
+      "extension.terminalCapture.runCapture"
+    ];
+    "editor.minimap.enabled" = true;
+    "vim.useSystemClipboard" = true;
+    "vim.leader" = ",";
+    "vim.normalModeKeyBindings" = [
+      {
+        before = [
+          "<leader>"
+          "e"
+        ];
+        commands = [
+          {
+            command = "workbench.files.action.focusFilesExplorer";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "r"
+          "n"
+        ];
+        commands = [
+          {
+            command = "editor.action.rename";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "f"
+          "t"
+        ];
+        commands = [
+          {
+            command = "rust-analyzer.toggleInlayHints";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "f"
+          "e"
+        ];
+        commands = [
+          {
+            command = "workbench.action.toggleSidebarVisibility";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "t"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.terminal.focus";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "k"
+          "c"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "editor.action.commentLine";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "k"
+          "u"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "editor.action.commentLine";
+          }
+        ];
+      }
+      {
+        before = [
+          "<leader>"
+          "p"
+          "h"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.quickOpen";
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "h"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.navigateLeft";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "l"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.navigateRight";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "j"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.navigateDown";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "k"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.navigateUp";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "S"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditorLeft";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "v"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditorDown";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "V"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditorUp";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "s"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditorRight";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "w"
+          "d"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.closeEditorsAndGroup";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "s"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditorOrthogonal";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "j"
+          "f"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "editor.action.formatDocument";
+            args = [
+
+            ];
+          }
+        ];
+      }
+      {
+        before = [
+          "leader"
+          "v"
+          "s"
+        ];
+        after = [
+
+        ];
+        commands = [
+          {
+            command = "workbench.action.splitEditor";
+            args = [
+
+            ];
+          }
+        ];
+      }
+    ];
+    "files.trimTrailingWhitespace" = true;
+    "editor.lineNumbers" = "relative";
+    macros = {
+      fileExplorerSelect = [
+        "list.select"
+        "workbench.action.toggleSidebarVisibility"
+      ];
+    };
+    "[markdown]" = {
+      "editor.formatOnSave" = true;
+      "editor.wordWrap" = "on";
+      "editor.renderWhitespace" = "all";
+      "editor.acceptSuggestionOnEnter" = "off";
+      "files.trimTrailingWhitespace" = false;
+    };
+    "java.errors.incompleteClasspath.severity" = "ignore";
+    "gitlens.advanced.messages" = {
+      suppressCommitHasNoPreviousCommitWarning = false;
+      suppressCommitNotFoundWarning = false;
+      suppressFileNotUnderSourceControlWarning = false;
+      suppressGitVersionWarning = false;
+      suppressLineUncommittedWarning = false;
+      suppressNoRepositoryWarning = false;
+    };
+    "explorer.confirmDelete" = false;
+    "gitlens.keymap" = "chorded";
+    "gitlens.historyExplorer.enabled" = true;
+    "files.eol" = "\n";
+    "python.jediEnabled" = false;
+    "terminal.integrated.defaultProfile.windows" = "Powershell";
+    "terminal.integrated.profiles.windows" = {
+      PowerShell = {
+        source = "PowerShell";
+        icon = "terminal-powershell";
+      };
+      "Command Prompt" = {
+        path = [
+          "${env:windir}\\Sysnative\\cmd.exe"
+          "${env:windir}\\System32\\cmd.exe"
+        ];
+        args = [
+
+        ];
+        icon = "terminal-cmd";
+      };
+      "Git Bash" = {
+        source = "Git Bash";
+      };
+    };
+    "terminal.integrated.defaultProfile.linux" = "flathub-fish";
+    "terminal.integrated.profiles.linux" = {
+      bash = {
+        path = "bash";
+        icon = "terminal-bash";
+      };
+      zsh = {
+        path = "zsh";
+        icon = "terminal-linux";
+      };
+      flathub-fish = {
+        path = "/usr/bin/flatpak-spawn";
+        args = [
+          "--host"
+          "--env=TERM=xterm-256color"
+          "fish"
+        ];
+        icon = "terminal-linux";
+      };
+      fish = {
+        path = "/etc/bin/env";
+        args = [
+          "fish"
+        ];
+        icon = "terminal-linux";
+      };
+      tmux = {
+        path = "tmux";
+        icon = "terminal-tmux";
+      };
+      pwsh = {
+        path = "pwsh";
+        icon = "terminal-powershell";
+      };
+    };
+    "sync.gist" = "76899649ceb90c160960e4bc4b273781";
+    "sync.quietSync" = false;
+    "sync.askGistName" = false;
+    "sync.removeExtensions" = true;
+    "sync.syncExtensions" = true;
+    "sync.autoDownload" = false;
+    "sync.autoUpload" = false;
+    "sync.lastUpload" = "2018-07-21T04:42:09.300Z";
+    "sync.lastDownload" = "2018-08-28T19:12:00.159Z";
+    "sync.forceDownload" = false;
+    "vim.disableExtension" = false;
+    "editor.useTabStops" = false;
+    "breadcrumbs.enabled" = true;
+    "gitlens.views.fileHistory.enabled" = true;
+    "python.condaPath" = "/home/mikewright/Tools/conda/current/bin/conda";
+    "editor.tabSize" = 2;
+    "[rust]" = {
+      "editor.tabSize" = 4;
+      "outline.showTypeParameters" = false;
+      "editor.rulers" = [
+        100
+        120
+      ];
+    };
+    "[proto3]" = {
+      "editor.tabSize" = 2;
+      "outline.showTypeParameters" = false;
+      "editor.rulers" = [
+        100
+        120
+      ];
+    };
+    "[csharp]" = {
+      "editor.tabSize" = 4;
+      "outline.showTypeParameters" = true;
+    };
+    "[python]" = {
+      "editor.tabSize" = 4;
+      "editor.rulers" = [
+        100
+        120
+      ];
+      "editor.formatOnType" = true;
+    };
+    vs-kubernetes = {
+      "vs-kubernetes.minikube-path" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
+      "vscode-kubernetes.helm-path.linux" = "/home/mikewright/.vs-kubernetes/tools/helm/linux-amd64/helm";
+      "vscode-kubernetes.minikube-path.linux" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
+    };
+    "workbench.colorTheme" = "GitHub Dark Default";
+    "workbench.list.defaultFindMode" = "highlight";
+    "workbench.list.typeNavigationMode" = "automatic";
+    "editor.suggestSelection" = "first";
+    "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
+    "atlascode.jira.workingSite" = {
+      baseUrlSuffix = "atlassian.net";
+    };
+    "terminal.integrated.shell.windows" = "C:\\Program Files\\PowerShell\\7\\pwsh.exe";
+    "sync.forceUpload" = true;
+    "settingsSync.ignoredExtensions" = [
+      "dart-code.flutter"
+      "dart-code.dart-code"
+    ];
+    "kite.showWelcomeNotificationOnStartup" = false;
+    "dart.flutterSdkPath" = "C:\\Development\\Tools\\flutter";
+    "debug.openDebug" = "openOnDebugBreak";
+    "[dart]" = {
+      "editor.formatOnSave" = true;
+      "editor.formatOnType" = true;
+      "editor.rulers" = [
+        80
+      ];
+      "editor.selectionHighlight" = false;
+      "editor.suggest.snippetsPreventQuickSuggestions" = false;
+      "editor.suggestSelection" = "first";
+      "editor.tabCompletion" = "onlySnippets";
+      "editor.wordBasedSuggestions" = "off";
+    };
+    "[jsonc]" = {
+      "editor.defaultFormatter" = "vscode.json-language-features";
+    };
+    "python.languageServer" = "Pylance";
+    "terminal.integrated.inheritEnv" = false;
+    "dart.openDevTools" = "flutter";
+    "workbench.editorAssociations" = {
+      "*.ipynb" = "jupyter.notebook.ipynb";
+    };
+    "terminal.integrated.gpuAcceleration" = "canvas";
+    "editor.inlineSuggest.enabled" = true;
+    "remote.SSH.defaultExtensions" = [
+      "gitpod.gitpod-remote-ssh"
+    ];
+    "remote.SSH.configFile" = "/var/folders/g2/wvkymszx3ng1bkq6bwm_kgg00000gn/T/gitpod_ssh_config-64177-JztmirHqgtdz";
+    "git.autofetch" = true;
+    "[json]" = {
+      "editor.defaultFormatter" = "vscode.json-language-features";
+    };
+    "markdownlint.config" = {
+      default = true;
+      MD003 = {
+        style = "setext_with_atx";
+      };
+      MD007 = {
+        indent = 2;
+      };
+      MD046 = {
+        style = "indented";
+      };
+      no-hard-tabs = false;
+    };
+    "debug.allowBreakpointsEverywhere" = true;
+    "githubPullRequests.terminalLinksHandler" = "github";
+    "editor.inlayHints.enabled" = false;
+    "projectManager.git.baseFolders" = [
+      "~/Development/"
+    ];
+    "go.toolsManagement.autoUpdate" = true;
+    "vscode-pets.petSize" = "medium";
+    "vscode-pets.petType" = "dog";
+    "vscode-pets.theme" = "forest";
+    "arduino.useArduinoCli" = true;
+    "git.openRepositoryInParentFolders" = "never";
+    "python.analysis.inlayHints.functionReturnTypes" = true;
+    "python.analysis.inlayHints.variableTypes" = true;
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces" = true;
+    "remote.SSH.remotePlatform" = {
+      "*.gitpod.io" = "linux";
+    };
+    "debug.onTaskErrors" = "showErrors";
+    "github.copilot.selectedCompletionModel" = "";
+    "github.copilot.nextEditSuggestions.enabled" = true;
+    "terminal.integrated.fontFamily" = "monospace";
+  };
+  
 
   packages = with pkgs; [
     cloc
