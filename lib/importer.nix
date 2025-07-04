@@ -15,7 +15,7 @@ let
         name = m.name or "default";
         vscodeExtensions = m.vscodeExtensions or [];
         vscodeSettings = m.vscodeSettings or {};
-        vscodeKeybindings = m.vscodeKeybindings or [];
+        keybindings = m.keybindings or [];
         packages = m.packages or [];
         startScript = m.startScript or "";
       };
@@ -27,7 +27,7 @@ let
       completedMerge = builtins.foldl' (b: m: {
         vscodeExtensions = b.vscodeExtensions ++ m.vscodeExtensions;
         vscodeSettings = b.vscodeSettings // m.vscodeSettings;
-        vscodeKeybindings = b.vscodeKeybindings ++ m.vscodeKeybindings;
+        keybindings = b.keybindings ++ m.keybindings;
         packages = b.packages ++ m.packages;
         startScript = b.startScript + m.startScript;
       }) baseModule loadedChildren;
@@ -50,7 +50,7 @@ in {
       settingsJson = pkgs.writeText "settings.json" (builtins.toJSON fullModule.vscodeSettings);
 
       # Create VSCode keybindings JSON
-      keybindingsJson = pkgs.writeText "keybindings.json" (builtins.toJSON fullModule.vscodeKeybindings);
+      keybindingsJson = pkgs.writeText "keybindings.json" (builtins.toJSON fullModule.keybindings);
 
       # Create VSCode extensions list
       extensionsJson = pkgs.writeText "extensions.json" (builtins.toJSON {
@@ -62,7 +62,7 @@ in {
         mkdir -p $out/User
         cp ${settingsJson} $out/User/settings.json
         cp ${keybindingsJson} $out/User/keybindings.json
-        cp ${extensionsJson} $out/extensions.json
+        cp ${extensionsJson} $out/User/extensions.json
       '';
 
       scriptText = fullModule.startScript;
@@ -95,29 +95,34 @@ in {
           ${scriptText}
 
           # Create a temporary directory for VSCode user data
-          #TEMP_USER_DATA_DIR=$(mktemp -d)
-          #echo "Using temporary VSCode user data directory: $TEMP_USER_DATA_DIR"
-          # Create the User directory structure
-          #mkdir -p "$TEMP_USER_DATA_DIR/User"
+          TEMP_USER_DATA_DIR=$(mktemp -d)
+          echo "using temporary vscode user data directory: $TEMP_USER_DATA_DIR"
+          # create the user directory structure
+          mkdir -p "$TEMP_USER_DATA_DIR/User"
           
-          # Copy our settings to the temporary directory
-          #cp ${settingsJson} "$TEMP_USER_DATA_DIR/User/settings.json"
+          # copy our settings to the temporary directory
+          cp ${settingsJson} "$TEMP_USER_DATA_DIR/User/settings.json"
           
-          # Copy our keybindings to the temporary directory
-          #cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
+          # copy our keybindings to the temporary directory
+          cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
           
-          # Run VSCode with the temporary user data directory
+          # run vscode with the temporary user data directory
           #${pkgs.vscode}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
-          
-          # Clean up the temporary directory when VSCode exits
-          #rm -rf "$TEMP_USER_DATA_DIR"
-          
+                    
           # ${pkgs.vscode}/bin/code "$@"
 
           # Run VSCode with the Nix-managed user data directory
-          echo "Here we go"
-          ${pkgs.vscode}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
-          echo $?
+          echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
+          echo "${pkgs.vscode}/bin/code --user-data-dir=${vscodeUserDataDir}"
+
+          ${pkgs.vscode}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
+          #${pkgs.vscode}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
+
+          # Clean up the temporary directory when VSCode exits
+          #rm -rf "$TEMP_USER_DATA_DIR"
+
+          #${pkgs.vscode}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
+          #echo $?
         fi
       '';
     };
