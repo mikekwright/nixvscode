@@ -2,7 +2,8 @@
   description = "A VSCode flake with extensions and settings";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/4989a246d7a390a859852baddb1013f825435cee";
+    # Version 1.102.1 - July 1st, 2025
+    nixpkgs.url = "github:nixos/nixpkgs/b32441ec0fae600e647cf4e6d6c245286a583106";
 
     # Flake parts for 2025-02-08
     flake-parts.url = "github:hercules-ci/flake-parts/32ea77a06711b758da0ad9bd6a844c5740a87abd";
