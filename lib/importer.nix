@@ -66,10 +66,16 @@ in {
       '';
 
       scriptText = fullModule.startScript;
+
+      vscode = pkgs.vscode-with-extensions.override {
+        vscodeExtensions = fullModule.vscodeExtensions;
+      };
+
     in pkgs.writeShellApplication {
       name = "vscode";
       runtimeInputs = [ 
-        pkgs.vscode 
+        #pkgs.vscode 
+        vscode
       ] ++ modulePackages;
 
       text = /*shell*/ ''
