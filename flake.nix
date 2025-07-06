@@ -10,7 +10,7 @@
     #   solution, we will use it to help us manage the different extensions that
     #   we want to use.
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
+      url = "github:nix-community/nix-vscode-extensions/41de1aa39e479cdf2e6fd522431aa1fc3615e35a";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,15 +40,12 @@
           overlays = [ inputs.nix-vscode-extensions.overlays.default ];
         };
 
+        #  This is the other way (supposedly) to use the extensions, but I am going
+        #    to land on just the overlaps to start
         # extensions = inputs.nix-vscode-extensions.extensions.${system};
 
         # This should go away at some point
         extra-pkgs = {
-          # extensions = import inputs.nix-vscode-extensions {
-          #   inherit system;
-          #   config.allowUnfree = true;
-          #   # overlays = [ inputs.nix-vscode-extensions.overlays.default ];
-          # };
         };
 
         debug = import ./lib/debug.nix {inherit pkgs extra-pkgs system;};
@@ -57,6 +54,7 @@
         vscodeModule = {
           inherit pkgs extra-pkgs;
           module = import ./config; # import the module directly
+
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
             inherit inputs system pkgs debug extra-pkgs;

@@ -77,17 +77,7 @@ in {
           pkgs.open-vsx-release.rust-lang.rust-analyzer
           
           # This is an example of an non-opensource extensions
-          #   Currently doesn't work, because it is not a pkg type
-          #pkgs.vscode-marketplace.golang.go
-
-
-          # golang.go
-        # ] ++ (with extra-pkgs.extensions; [
-          # vscode-marketplace.golang.go
-
-          # vscode-marketplace.ms-python.vscode-pylance
-          # vscode-marketplace.ms-python.vscode-pylance
-          # open-vsx-release.rust-lang.rust-analyzer
+          pkgs.vscode-marketplace.golang.go
         ]) ++ fullModule.vscodeExtensions;
       };
     in pkgs.writeShellApplication {
@@ -97,6 +87,12 @@ in {
         vscode-wrapper
       ] ++ modulePackages;
 
+
+      #
+      # NOTE: When using vscode, you need to set it up in a writable directly for the user directory
+      #   this is because vscode creates a number of other files, and if it can't create those files
+      #   it will just crash.
+      #
       text = /*shell*/ ''
         set +u
         if [[ -n $VSCODE_DEBUG ]]; then
@@ -122,7 +118,8 @@ in {
           # Create a temporary directory for VSCode user data
           TEMP_USER_DATA_DIR=$(mktemp -d)
           echo "using temporary vscode user data directory: $TEMP_USER_DATA_DIR"
-          # create the user directory structure
+
+          # Make sure the User portion of the directory exists (path for settings)
           mkdir -p "$TEMP_USER_DATA_DIR/User"
           
           # copy our settings to the temporary directory
@@ -131,23 +128,16 @@ in {
           # copy our keybindings to the temporary directory
           cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
           
-          # run vscode with the temporary user data directory
-          #${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
-                    
-          # ${vscode-wrapper}/bin/code "$@"
-
           # Run VSCode with the Nix-managed user data directory
           echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
-          echo "${pkgs.vscode}/bin/code --user-data-dir=${vscodeUserDataDir}"
-
           ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
-          #${vscode-wrapper}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
 
-          # Clean up the temporary directory when VSCode exits
-          #rm -rf "$TEMP_USER_DATA_DIR"
-
-          #${vscode-wrapper}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
-          #echo $?
+          if [[ -z $SKIP_VSCODE_CLEAN ]]; then
+            # Clean up the temporary directory when VSCode exits
+            rm -rf "$TEMP_USER_DATA_DIR"
+          else
+            echo "Ignored cleanup of temp directory $TEMP_USER_DATA_DIR"
+          fi;
         fi
       '';
     };
