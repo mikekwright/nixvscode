@@ -123,16 +123,6 @@
         icon = "terminal-powershell";
       };
     };
-    "sync.gist" = "76899649ceb90c160960e4bc4b273781";
-    "sync.quietSync" = false;
-    "sync.askGistName" = false;
-    "sync.removeExtensions" = true;
-    "sync.syncExtensions" = true;
-    "sync.autoDownload" = false;
-    "sync.autoUpload" = false;
-    "sync.lastUpload" = "2018-07-21T04:42:09.300Z";
-    "sync.lastDownload" = "2018-08-28T19:12:00.159Z";
-    "sync.forceDownload" = false;
     "vim.disableExtension" = false;
     "editor.useTabStops" = false;
     "breadcrumbs.enabled" = true;

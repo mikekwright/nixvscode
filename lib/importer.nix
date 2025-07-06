@@ -67,15 +67,20 @@ in {
 
       scriptText = fullModule.startScript;
 
-      vscode = pkgs.vscode-with-extensions.override {
-        vscodeExtensions = fullModule.vscodeExtensions;
-      };
+      vscode-wrapper = pkgs.vscode-with-extensions.override {
+        vscode = pkgs.vscode;
+        vscodeExtensions = with pkgs.vscode-extensions; [
+          ziglang.vscode-zig
+          golang.go
 
+
+        ] ++ fullModule.vscodeExtensions;
+      };
     in pkgs.writeShellApplication {
       name = "vscode";
       runtimeInputs = [ 
         #pkgs.vscode 
-        vscode
+        vscode-wrapper
       ] ++ modulePackages;
 
       text = /*shell*/ ''
@@ -113,21 +118,21 @@ in {
           cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
           
           # run vscode with the temporary user data directory
-          #${pkgs.vscode}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
+          #${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
                     
-          # ${pkgs.vscode}/bin/code "$@"
+          # ${vscode-wrapper}/bin/code "$@"
 
           # Run VSCode with the Nix-managed user data directory
           echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
           echo "${pkgs.vscode}/bin/code --user-data-dir=${vscodeUserDataDir}"
 
-          ${pkgs.vscode}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
-          #${pkgs.vscode}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
+          ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
+          #${vscode-wrapper}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
 
           # Clean up the temporary directory when VSCode exits
           #rm -rf "$TEMP_USER_DATA_DIR"
 
-          #${pkgs.vscode}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
+          #${vscode-wrapper}/bin/code --user-data-dir="${vscodeUserDataDir}" "$@"
           #echo $?
         fi
       '';
