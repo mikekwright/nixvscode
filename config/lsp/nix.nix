@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     # This is a selector for enabling a flake in an env
     #   https://marketplace.visualstudio.com/items?itemName=arrterian.nix-env-selector
     vscode-marketplace.arrterian.nix-env-selector
@@ -35,5 +35,7 @@
         };
       };
     };
+
+    "nixEnvSelector.useFlakes" = true;
   };
 }

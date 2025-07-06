@@ -2,7 +2,8 @@
   description = "A VSCode flake with extensions and settings";
 
   inputs = {
-    # Version 1.102.1 - July 1st, 2025
+    # Version 1.101.2 - July 1st, 2025
+    #   If you update to use a different version, update the below extensions as well
     nixpkgs.url = "github:nixos/nixpkgs/b32441ec0fae600e647cf4e6d6c245286a583106";
 
     # This input includes most of the extensions that are included in the vscode
@@ -11,6 +12,7 @@
     #   we want to use.
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions/41de1aa39e479cdf2e6fd522431aa1fc3615e35a";
+      #url = "github:nix-community/nix-vscode-extensions/7b962ab252cecf0b88ae621e1986899e20a4ead3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,12 +42,12 @@
           overlays = [ inputs.nix-vscode-extensions.overlays.default ];
         };
 
-        #  This is the other way (supposedly) to use the extensions, but I am going
-        #    to land on just the overlaps to start
-        # extensions = inputs.nix-vscode-extensions.extensions.${system};
 
         # This should go away at some point
         extra-pkgs = {
+          #  This is the other way (supposedly) to use the extensions, but I am going
+          #    to land on just the overlaps to start
+          extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
         };
 
         debug = import ./lib/debug.nix {inherit pkgs extra-pkgs system;};

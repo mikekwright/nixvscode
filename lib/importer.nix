@@ -34,6 +34,8 @@ let
     in
       debug.trace completedMerge completedMerge;
 
+
+
 in {
   makeModule = m:
     let
@@ -112,7 +114,7 @@ in {
           echo "VSCode settings file path: ${settingsJson}"
           echo "VSCode keybindings file path: ${keybindingsJson}"
           echo "VSCode user data directory: ${vscodeUserDataDir}"
-        else
+        elif [[ -n $VSCODE_TEMP ]]; then
           ${scriptText}
 
           # Create a temporary directory for VSCode user data
@@ -124,9 +126,11 @@ in {
 
           # copy our settings to the temporary directory
           cp ${settingsJson} "$TEMP_USER_DATA_DIR/User/settings.json"
+          chmod 444 "$TEMP_USER_DATA_DIR/User/settings.json"
 
           # copy our keybindings to the temporary directory
           cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
+          chmod 444 "$TEMP_USER_DATA_DIR/User/keybindings.json"
 
           # Run VSCode with the Nix-managed user data directory
           echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
@@ -141,6 +145,35 @@ in {
           else
             echo "Ignored cleanup of temp directory $TEMP_USER_DATA_DIR"
           fi;
+        else
+          ${scriptText}
+
+          echo "Using VSCode for user home directory: $HOME/.vscode"
+          if [[ ! -d "$HOME/.config/Code" ]]; then
+            mkdir -p "$HOME/.config/Code/User"
+          fi
+
+          # copy our settings to the temporary directory
+          if [[ -e "$HOME/.config/Code/User/settings.json" ]]; then
+            echo "Found existing settings.json, removing it"
+            rm -f "$HOME/.config/Code/User/settings.json.bak"
+            mv "$HOME/.config/Code/User/settings.json" "$HOME/.config/Code/User/settings.json.bak"
+          fi
+          cp ${settingsJson} "$HOME/.config/Code/User/settings.json"
+          chmod 444 "$HOME/.config/Code/User/settings.json"
+
+          # copy our keybindings to the temporary directory
+          if [[ -e "$HOME/.config/Code/User/keybindings.json" ]]; then
+            echo "Found existing keybindings.json, removing it"
+            rm -f "$HOME/.config/Code/User/keybindings.json.bak"
+            mv "$HOME/.config/Code/User/keybindings.json" "$HOME/.config/Code/User/keybindings.json.bak"
+          fi
+          cp ${keybindingsJson} "$HOME/.config/Code/User/keybindings.json"
+          chmod 444 "$HOME/.config/Code/User/keybindings.json"
+
+          # Run VSCode with the User's directory
+          echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
+          ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
         fi
       '';
     };

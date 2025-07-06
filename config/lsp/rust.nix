@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     open-vsx-release.rust-lang.rust-analyzer
   ];
 

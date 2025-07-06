@@ -1,16 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official copilot, needs to be installed this was as it fails to be "setup"
     #   when started with vscode
     #
     #   https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
-    vscode-marketplace.github.copilot
+    vscode-marketplace-release.github.copilot
 
     # You also need the chat plugin
     #   https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat
-    vscode-marketplace.github.copilot-chat
+    vscode-marketplace-release.github.copilot-chat
   ];
 
   vscodeSettings = {

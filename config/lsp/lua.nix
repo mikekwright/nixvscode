@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     # This is the lua server (coded in lua)
     #   https://marketplace.visualstudio.com/items?itemName=sumneko.lua
     vscode-marketplace.sumneko.lua

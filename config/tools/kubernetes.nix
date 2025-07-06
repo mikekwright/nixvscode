@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     # This is microsofts k8s bridge solution
     #    https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
     vscode-marketplace.ms-kubernetes-tools.vscode-kubernetes-tools

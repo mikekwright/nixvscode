@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
-  vscodeExtensions = with pkgs; [
+  vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official python extension
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.python
     vscode-marketplace.ms-python.python
