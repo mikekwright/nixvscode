@@ -2,6 +2,9 @@
 
 {
   imports = [
+    # Start with Vim, you have to have vim mode for sure
+    ./vim
+
     ./theme
     ./tools
     ./lsp
@@ -9,7 +12,6 @@
     ./keymaps.nix
     ./greeter.nix
     ./avante.nix
-    ./vim.nix
   ];
 
   vscodeSettings = {
@@ -37,8 +39,6 @@
       "extension.terminalCapture.runCapture"
     ];
     "editor.minimap.enabled" = true;
-    "vim.useSystemClipboard" = true;
-    "vim.leader" = ",";
 
     "files.trimTrailingWhitespace" = true;
     "editor.lineNumbers" = "relative";
@@ -124,7 +124,6 @@
         icon = "terminal-powershell";
       };
     };
-    "vim.disableExtension" = false;
     "editor.useTabStops" = false;
     "breadcrumbs.enabled" = true;
     "gitlens.views.fileHistory.enabled" = true;
@@ -553,34 +552,7 @@
       command = "-workbench.actions.view.problems";
     }
 
-    #
-    # Search and Find in Files
-    #
-    {
-      key = ", f p";
-      command = "workbench.action.showCommands";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled";
-    }
-    {
-      key = ", f f";
-      command = "workbench.action.quickOpen";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled";
-    }
-    {
-      key = ", f g";
-      command = "workbench.action.findInFiles";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
-    {
-      key = "ctrl+w j";
-      command = "search.action.focusSearchList";
-      when = "searchInputBoxFocus";
-    }
-    {
-      key = "ctrl+w k";
-      command = "workbench.action.findInFiles";
-      when = "searchResultListFocused";
-    }
+    
 
 
     #
@@ -886,70 +858,6 @@
       command = "bookmarksExplorer.open";
       key = ", b e";
       when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
-
-    #
-    # Vim = Run and Debug
-    #
-    {
-      key = ", r b";
-      command = "editor.debug.action.toggleBreakpoint";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable";
-    }
-    {
-      key = ", r d";
-      command = "workbench.action.debug.selectandstart";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState == 'inactive'";
-    }
-    {
-      key = ", r s";
-      command = "workbench.action.debug.stop";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r r";
-      command = "workbench.action.debug.continue";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r c";
-      command = "workbench.action.debug.continue";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r d";
-      command = "workbench.action.debug.start";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r n";
-      command = "workbench.action.debug.stepOver";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r i";
-      command = "workbench.action.debug.stepInto";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r o";
-      command = "workbench.action.debug.stepOut";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r h";
-      command = "editor.debug.action.showDebugHover";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r t";
-      command = "workbench.action.debug.toggleRepl";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState != 'inactive'";
-    }
-    {
-      key = ", r r";
-      command = "workbench.action.debug.run";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debugState == 'inactive'";
     }
   ];
 } 

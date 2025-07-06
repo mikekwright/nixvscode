@@ -49,6 +49,7 @@
         };
 
         debug = import ./lib/debug.nix {inherit pkgs extra-pkgs system;};
+        funcs = import ./lib/funcs.nix {inherit debug extra-pkgs pkgs system;};
         lib = import ./lib/importer.nix {inherit debug extra-pkgs pkgs system;};
 
         vscodeModule = {
@@ -57,7 +58,7 @@
 
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
-            inherit inputs system pkgs debug extra-pkgs;
+            inherit inputs system pkgs debug extra-pkgs funcs;
           };
         };
         vscode = lib.makeModule vscodeModule;

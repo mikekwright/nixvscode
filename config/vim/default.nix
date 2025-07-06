@@ -4,6 +4,12 @@
 #  keyboard shortcut
 
 {
+  imports = [
+    ./search.nix
+    ./rundebug.nix
+    ./bookmarks.nix
+
+  ];
 
   vscodeExtensions = with pkgs; [
     # Official vim plugin for vscode
