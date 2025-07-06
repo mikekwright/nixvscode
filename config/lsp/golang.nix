@@ -1,42 +1,33 @@
 { pkgs, ... }:
 
-let
-  goLua = /*lua*/ ''
-    lspconfig.gopls.setup({
-      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-      capabilities = lsp_cmp_capabilities,
-      extraOptions = {
-        cmd = { '${pkgs.gopls}/bin/gopls' },
-      },
-    })
-
-    local golang_neotest_config = { -- Specify configuration
-      go_test_args = {
-        "-v",
-        "-race",
-        "-count=1",
-        "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
-      },
-    }
-    table.insert(neotest_adapters, require("neotest-golang")(golang_neotest_config))
-  '';
-in
 {
-  lua = goLua;
-
-  vimPackages = with pkgs.vimPlugins; [
-    vim-go
-    neotest-golang
+  vscodeExtensions = with pkgs; [
+    # This is the official go plugin for vscode
+    #   https://marketplace.visualstudio.com/items?itemName=golang.Go
+    vscode-marketplace.golang.go
   ];
 
-  startScript = /*bash*/ ''
-    unset GOROOT
-  '';
-
   packages = with pkgs; [
+    # Install the language
+    go
+
+    # Install tools to help
     gotools
 
     # This is the language server for Go
     gopls
   ];
+
+  vscodeSettings = {
+    "[go]" = {
+      "editor.tabsize" = 2;
+      "editor.rulers" = [
+        100
+        120
+      ];
+      "editor.formatOnType" = true;
+    };
+
+    "go.toolsManagement.autoUpdate" = true;
+  };
 }

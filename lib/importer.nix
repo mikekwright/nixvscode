@@ -5,7 +5,7 @@ let
     then builtins.map (i: ((import i) args) // { name=i; }) m.imports
     else [];
 
-  mergeModule = m: args: 
+  mergeModule = m: args:
     let
       childrenModules = debug.trace m (loadImports m args);
 
@@ -31,11 +31,11 @@ let
         packages = b.packages ++ m.packages;
         startScript = b.startScript + m.startScript;
       }) baseModule loadedChildren;
-    in 
+    in
       debug.trace completedMerge completedMerge;
 
 in {
-  makeModule = m: 
+  makeModule = m:
     let
       # The base module from flake is not a common module definition, this kicks off the
       #   process of building and loading all the modules in the system.
@@ -68,22 +68,22 @@ in {
       scriptText = fullModule.startScript;
 
       vscode-wrapper = pkgs.vscode-with-extensions.override {
-        vscode = pkgs.vscode;
+        vscode = pkgs.vscode-fhs;
         vscodeExtensions = ([
           # This is an input from the nixpkgs extensions list (works fine)
-          pkgs.vscode-extensions.ziglang.vscode-zig
+          #pkgs.vscode-extensions.ziglang.vscode-zig
 
           # This is an open source test with the overlay (works)
-          pkgs.open-vsx-release.rust-lang.rust-analyzer
-          
+          #pkgs.open-vsx-release.rust-lang.rust-analyzer
+
           # This is an example of an non-opensource extensions
-          pkgs.vscode-marketplace.golang.go
+          #pkgs.vscode-marketplace.golang.go
         ]) ++ fullModule.vscodeExtensions;
       };
     in pkgs.writeShellApplication {
       name = "vscode";
-      runtimeInputs = [ 
-        #pkgs.vscode 
+      runtimeInputs = [
+        #pkgs.vscode
         vscode-wrapper
       ] ++ modulePackages;
 
@@ -109,9 +109,9 @@ in {
           echo '${scriptText}'
 
           echo '-------------------------'
-          echo "VSCode settings file path: ${settingsJson}" 
-          echo "VSCode keybindings file path: ${keybindingsJson}" 
-          echo "VSCode user data directory: ${vscodeUserDataDir}" 
+          echo "VSCode settings file path: ${settingsJson}"
+          echo "VSCode keybindings file path: ${keybindingsJson}"
+          echo "VSCode user data directory: ${vscodeUserDataDir}"
         else
           ${scriptText}
 
@@ -121,13 +121,13 @@ in {
 
           # Make sure the User portion of the directory exists (path for settings)
           mkdir -p "$TEMP_USER_DATA_DIR/User"
-          
+
           # copy our settings to the temporary directory
           cp ${settingsJson} "$TEMP_USER_DATA_DIR/User/settings.json"
-          
+
           # copy our keybindings to the temporary directory
           cp ${keybindingsJson} "$TEMP_USER_DATA_DIR/User/keybindings.json"
-          
+
           # Run VSCode with the Nix-managed user data directory
           echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
           ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"

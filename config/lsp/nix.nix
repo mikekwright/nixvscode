@@ -12,8 +12,28 @@
   ];
 
   packages = with pkgs; [
-    #nixd
+    nixd
+
     # This is included to enable the
     nixfmt
   ];
+
+  vscodeSettings = {
+    "[nix]" = {
+      "editor.tabSize" = 2;
+      "editor.rulers" = [ 80 120 ];
+      "editor.formatOnType" = true;
+    };
+
+    "nix.enableLanguageServer" = true;
+    "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+    "nix.serverSettings" = {
+      # Check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
+      "nixd" = {
+        "formatting" = {
+          "command" = ["${pkgs.nixfmt}/bin/nixfmt"];
+        };
+      };
+    };
+  };
 }

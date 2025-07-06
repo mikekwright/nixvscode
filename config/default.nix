@@ -6,16 +6,13 @@
     ./vim
 
     ./theme.nix
+    ./zen-mode.nix
+
     ./tools
     ./lsp
   ];
 
   vscodeSettings = {
-    "zenMode.fullScreen" = true;
-    "zenMode.centerLayout" = true;
-    "zenMode.hideLineNumbers" = false;
-    "zenMode.hideActivityBar" = true;
-    "zenMode.hideStatusBar" = true;
     "explorer.excludeGitIgnore" = true;
     "editor.insertSpaces" = true;
     "editor.detectIndentation" = false;
@@ -63,7 +60,6 @@
     "gitlens.keymap" = "chorded";
     "gitlens.historyExplorer.enabled" = true;
     "files.eol" = "\n";
-    "python.jediEnabled" = false;
     "terminal.integrated.defaultProfile.windows" = "Powershell";
     "terminal.integrated.profiles.windows" = {
       PowerShell = {
@@ -122,16 +118,8 @@
     "editor.useTabStops" = false;
     "breadcrumbs.enabled" = true;
     "gitlens.views.fileHistory.enabled" = true;
-    "python.condaPath" = "/home/mikewright/Tools/conda/current/bin/conda";
     "editor.tabSize" = 2;
-    "[rust]" = {
-      "editor.tabSize" = 4;
-      "outline.showTypeParameters" = false;
-      "editor.rulers" = [
-        100
-        120
-      ];
-    };
+
     "[proto3]" = {
       "editor.tabSize" = 2;
       "outline.showTypeParameters" = false;
@@ -144,14 +132,7 @@
       "editor.tabSize" = 4;
       "outline.showTypeParameters" = true;
     };
-    "[python]" = {
-      "editor.tabSize" = 4;
-      "editor.rulers" = [
-        100
-        120
-      ];
-      "editor.formatOnType" = true;
-    };
+
     vs-kubernetes = {
       "vs-kubernetes.minikube-path" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
       "vscode-kubernetes.helm-path.linux" = "/home/mikewright/.vs-kubernetes/tools/helm/linux-amd64/helm";
@@ -188,7 +169,6 @@
     "[jsonc]" = {
       "editor.defaultFormatter" = "vscode.json-language-features";
     };
-    "python.languageServer" = "Pylance";
     "terminal.integrated.inheritEnv" = false;
     "dart.openDevTools" = "flutter";
     "workbench.editorAssociations" = {
@@ -223,13 +203,11 @@
     "projectManager.git.baseFolders" = [
       "~/Development/"
     ];
-    "go.toolsManagement.autoUpdate" = true;
     "vscode-pets.petSize" = "medium";
     "vscode-pets.petType" = "dog";
     "arduino.useArduinoCli" = true;
     "git.openRepositoryInParentFolders" = "never";
-    "python.analysis.inlayHints.functionReturnTypes" = true;
-    "python.analysis.inlayHints.variableTypes" = true;
+
     "dotnet.completion.showCompletionItemsFromUnimportedNamespaces" = true;
     "remote.SSH.remotePlatform" = {
       "*.gitpod.io" = "linux";
@@ -239,15 +217,14 @@
     "github.copilot.nextEditSuggestions.enabled" = true;
     "terminal.integrated.fontFamily" = "monospace";
   };
-  
+
 
   packages = with pkgs; [
     cloc
   ];
 
-  vscodeExtensions = with pkgs; [
-    vscode-marketplace.ms-python.python
-  ];
+  #vscodeExtensions = with pkgs; [
+  #];
 
   keybindings = [
     {
@@ -267,7 +244,7 @@
       command = "workbench.action.focusActiveEditorGroup";
       when = "terminalFocus";
     }
-    
+
     {
       key = "ctrl+k";
       command = "workbench.action.focusActiveEditorGroup";
@@ -545,11 +522,11 @@
       command = "-workbench.actions.view.problems";
     }
 
-    
 
 
-    
 
-    
+
+
+
   ];
-} 
+}

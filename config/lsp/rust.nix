@@ -1,44 +1,8 @@
-{
-  pkgs,
-  ...
-}: let
-  rustAnalyzerLua =
-    /*
-    lua
-    */
-    ''
-      vim.g.rustaceanvim = {
-        server = {
-          on_attach = function(client, bufnr)
-            -- Your on_attach function here
-          end,
-          default_settings = {
-            -- rust-analyzer language server configuration
-            ['rust-analyzer'] = {
-              cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" },
-              cargo = {
-                allFeatures = true,
-              },
-            },
-          },
-        },
-      }
-    '';
-in {
-  lua = rustAnalyzerLua;
+{ pkgs, ... }:
 
-  vimPackages = let
-    rustaceanvim = pkgs.vimUtils.buildVimPlugin {
-      name = "rustaceanvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "mrcjkb";
-        repo = "rustaceanvim";
-        rev = "v5.10.1";
-        sha256 = "fQZe0CtY+gXLeuv1+hr2CJwUWK2lvdOFJ9HNlq3brAo=";
-      };
-    };
-  in [
-    rustaceanvim
+{
+  vscodeExtensions = with pkgs; [
+    open-vsx-release.rust-lang.rust-analyzer
   ];
 
   packages = with pkgs; [
@@ -49,4 +13,15 @@ in {
     #rustup
     cargo
   ];
+
+  vscodeSettings = {
+    "[rust]" = {
+      "editor.tabSize" = 4;
+      "outline.showTypeParameters" = false;
+      "editor.rulers" = [
+        100
+        120
+      ];
+    };
+  };
 }
