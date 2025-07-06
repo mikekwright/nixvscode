@@ -39,8 +39,7 @@ in
     #./sqlite.nix
     ./dbcode.nix
 
-
-    
+    ./gitlens.nix
   ];
 
   lua = debug.traceResult tools-setup-lua;

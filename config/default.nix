@@ -5,13 +5,9 @@
     # Start with Vim, you have to have vim mode for sure
     ./vim
 
-    ./theme
+    ./theme.nix
     ./tools
     ./lsp
-
-    ./keymaps.nix
-    ./greeter.nix
-    ./avante.nix
   ];
 
   vscodeSettings = {
@@ -23,7 +19,6 @@
     "explorer.excludeGitIgnore" = true;
     "editor.insertSpaces" = true;
     "editor.detectIndentation" = false;
-    "workbench.iconTheme" = "file-icons";
     "workbench.editor.enablePreview" = false;
     "files.exclude" = {
       "**/__pycache__" = true;
@@ -162,7 +157,6 @@
       "vscode-kubernetes.helm-path.linux" = "/home/mikewright/.vs-kubernetes/tools/helm/linux-amd64/helm";
       "vscode-kubernetes.minikube-path.linux" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
     };
-    "workbench.colorTheme" = "GitHub Dark Default";
     "workbench.list.defaultFindMode" = "highlight";
     "workbench.list.typeNavigationMode" = "automatic";
     "editor.suggestSelection" = "first";
@@ -232,7 +226,6 @@
     "go.toolsManagement.autoUpdate" = true;
     "vscode-pets.petSize" = "medium";
     "vscode-pets.petType" = "dog";
-    "vscode-pets.theme" = "forest";
     "arduino.useArduinoCli" = true;
     "git.openRepositoryInParentFolders" = "never";
     "python.analysis.inlayHints.functionReturnTypes" = true;
