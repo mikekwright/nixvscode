@@ -134,7 +134,10 @@ in {
 
           if [[ -z $SKIP_VSCODE_CLEAN ]]; then
             # Clean up the temporary directory when VSCode exits
-            rm -rf "$TEMP_USER_DATA_DIR"
+            #  TODO: We can't clean up the directories as vscode runs in another thread
+            #  and this kills it to quickly
+            #rm -rf "$TEMP_USER_DATA_DIR"
+            echo "Cant delete right now"
           else
             echo "Ignored cleanup of temp directory $TEMP_USER_DATA_DIR"
           fi;

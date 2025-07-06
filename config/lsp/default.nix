@@ -150,6 +150,8 @@ in {
   name = "lsp";
 
   imports = [
+    ./lua.nix
+
     ./neotest.nix
     ./dap.nix
     ./copilot.nix

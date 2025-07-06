@@ -1,29 +1,19 @@
 { pkgs, ... }:
 
-let
-  nix-lsp-lua = /*lua*/ ''
-    lspconfig.nixd.setup {
-      capabilities = lsp_cmp_capabilities,
-      extraOptions = {
-        cmd = { "${pkgs.nixd}/bin/nixd" };
-      };
-
-      --capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- Server-specific settings. See `:help lspconfig-setup`
-      settings = {
-        ['rust-analyzer'] = {},
-      },
-    }
-  '';
-in
 {
-  lua = nix-lsp-lua;
+  vscodeExtensions = with pkgs; [
+    # This is a selector for enabling a flake in an env
+    #   https://marketplace.visualstudio.com/items?itemName=arrterian.nix-env-selector
+    vscode-marketplace.arrterian.nix-env-selector
 
-  vimPackages = with pkgs.vimPlugins; [
-    vim-nix
+    # This is the extension with syntax highlighting for nix
+    #   https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide
+    vscode-marketplace.jnoortheen.nix-ide
   ];
 
   packages = with pkgs; [
-    nixd
+    #nixd
+    # This is included to enable the
+    nixfmt
   ];
 }

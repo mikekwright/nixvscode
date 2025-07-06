@@ -5,4 +5,16 @@
 
 {
 
+  vscodeExtensions = with pkgs; [
+    # Official vim plugin for vscode
+    vscode-marketplace.vscodevim.vim
+  ];
+
+  vscodeSettings = {
+    "vim.useSystemClipboard" = true;
+    "vim.leader" = ",";
+    "vim.disableExtension" = false;
+  };
+
+
 }

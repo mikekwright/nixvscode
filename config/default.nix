@@ -9,6 +9,7 @@
     ./keymaps.nix
     ./greeter.nix
     ./avante.nix
+    ./vim.nix
   ];
 
   vscodeSettings = {
