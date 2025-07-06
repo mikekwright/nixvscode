@@ -36,7 +36,8 @@ in
   imports = [
     ./aichat.nix
 
-    ./sqlite.nix
+    #./sqlite.nix
+    ./dbcode.nix
 
 
     
