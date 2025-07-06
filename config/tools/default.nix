@@ -34,20 +34,12 @@ in
   name = "tools";
 
   imports = [
-    ./whichkey.nix
-    ./tree.nix
-    ./noice.nix
-    ./left-status.nix
-    ./db-tools.nix
+    ./aichat.nix
 
-    ./debugging.nix
-    ./testing.nix
-    ./bookmarks.nix
-    ./gitdiff.nix
-    #./gitsigns.nix
-    ./bqf.nix
+    ./sqlite.nix
 
-    ./snacks.nix
+
+    
   ];
 
   lua = debug.traceResult tools-setup-lua;
