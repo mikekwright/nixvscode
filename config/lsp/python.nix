@@ -13,9 +13,18 @@
     # This is the python language server
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
     vscode-marketplace.ms-python.vscode-pylance
+
+    # This is the black formatter
+    #    https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
+    vscode-marketplace.ms-python.black-formatter
+
+    # This is the ruff formatter (much faster)
+    #    https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+    vscode-marketplace.charliermarsh.ruff
   ];
 
   packages = with pkgs; [
+    ruff
     pyright
   ];
 
@@ -27,6 +36,22 @@
         120
       ];
       "editor.formatOnType" = true;
+      # Lets use the ruff formatter
+      "editor.defaultFormatter" = "charliermarsh.ruff";
+      # We can ignore the black formatter for now
+      #"editor.defaultFormatter" = "ms-python.black-formatter";
+      #"editor.formatOnSave" = true;
+
+      "editor.codeActionsOnSave" = {
+        "source.fixAll" = "explicit";
+        "source.organizeImports" = "explicit";
+      };
+    };
+
+    "notebook.formatOnSave.enabled" = true;
+    "notebook.codeActionsOnSave" = {
+      "notebook.source.fixAll" = "explicit";
+      "notebook.source.organizeImports" = "explicit";
     };
 
     "python.languageServer" = "Pylance";

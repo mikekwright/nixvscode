@@ -128,10 +128,6 @@
         120
       ];
     };
-    "[csharp]" = {
-      "editor.tabSize" = 4;
-      "outline.showTypeParameters" = true;
-    };
 
     vs-kubernetes = {
       "vs-kubernetes.minikube-path" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
