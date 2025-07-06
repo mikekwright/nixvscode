@@ -83,7 +83,7 @@ in {
         ]) ++ fullModule.vscodeExtensions;
       };
     in pkgs.writeShellApplication {
-      name = "vscode";
+      name = "code";
       runtimeInputs = [
         #pkgs.vscode
         vscode-wrapper
