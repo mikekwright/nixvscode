@@ -37,14 +37,18 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [ inputs.nix-vscode-extensions.overlays.default ];
         };
+
+        # extensions = inputs.nix-vscode-extensions.extensions.${system};
 
         # This should go away at some point
         extra-pkgs = {
-          vsext = import inputs.nix-vscode-extensions {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          # extensions = import inputs.nix-vscode-extensions {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          #   # overlays = [ inputs.nix-vscode-extensions.overlays.default ];
+          # };
         };
 
         debug = import ./lib/debug.nix {inherit pkgs extra-pkgs system;};

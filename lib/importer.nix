@@ -1,4 +1,4 @@
-{ pkgs, debug, ... }:
+{ pkgs, debug, extra-pkgs, ... }:
 
 let
   loadImports = m: args: if builtins.hasAttr "imports" m
@@ -69,12 +69,26 @@ in {
 
       vscode-wrapper = pkgs.vscode-with-extensions.override {
         vscode = pkgs.vscode;
-        vscodeExtensions = with pkgs.vscode-extensions; [
-          ziglang.vscode-zig
-          golang.go
+        vscodeExtensions = ([
+          # This is an input from the nixpkgs extensions list (works fine)
+          pkgs.vscode-extensions.ziglang.vscode-zig
+
+          # This is an open source test with the overlay (works)
+          pkgs.open-vsx-release.rust-lang.rust-analyzer
+          
+          # This is an example of an non-opensource extensions
+          #   Currently doesn't work, because it is not a pkg type
+          #pkgs.vscode-marketplace.golang.go
 
 
-        ] ++ fullModule.vscodeExtensions;
+          # golang.go
+        # ] ++ (with extra-pkgs.extensions; [
+          # vscode-marketplace.golang.go
+
+          # vscode-marketplace.ms-python.vscode-pylance
+          # vscode-marketplace.ms-python.vscode-pylance
+          # open-vsx-release.rust-lang.rust-analyzer
+        ]) ++ fullModule.vscodeExtensions;
       };
     in pkgs.writeShellApplication {
       name = "vscode";
