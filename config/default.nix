@@ -150,18 +150,7 @@
     "kite.showWelcomeNotificationOnStartup" = false;
     "dart.flutterSdkPath" = "C:\\Development\\Tools\\flutter";
     "debug.openDebug" = "openOnDebugBreak";
-    "[dart]" = {
-      "editor.formatOnSave" = true;
-      "editor.formatOnType" = true;
-      "editor.rulers" = [
-        80
-      ];
-      "editor.selectionHighlight" = false;
-      "editor.suggest.snippetsPreventQuickSuggestions" = false;
-      "editor.suggestSelection" = "first";
-      "editor.tabCompletion" = "onlySnippets";
-      "editor.wordBasedSuggestions" = "off";
-    };
+    
     "[jsonc]" = {
       "editor.defaultFormatter" = "vscode.json-language-features";
     };
