@@ -181,19 +181,23 @@ in {
       };
 
     in pkgs.stdenv.mkDerivation rec {
-      name = "code";
+      desktopname = "vscode";
+      executable = "code";
+      name = executable;
+
       buildCommand = let
         desktopEntry = pkgs.makeDesktopItem {
-          inherit name;
+          # Using this name as this is the one the mimetype uses to open things
+          name = "vscode";
           desktopName = "Visual Studio Code";
-          exec = "${vscodeApp}/bin/${name} %f";
+          exec = "${vscodeApp}/bin/${executable} %f";
           terminal = false;
         };
       in ''
         mkdir -p $out/bin
         cp ${vscodeApp}/bin/${name} $out/bin
         mkdir -p $out/share/applications
-        cp ${desktopEntry}/share/applications/${name}.desktop $out/share/applications/${name}.desktop
+        cp ${desktopEntry}/share/applications/${desktopname}.desktop $out/share/applications/${desktopname}.desktop
       '';
       dontBuild = true;
     };
