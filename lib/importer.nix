@@ -34,8 +34,6 @@ let
     in
       debug.trace completedMerge completedMerge;
 
-
-
 in {
   makeModule = m:
     let
@@ -70,7 +68,7 @@ in {
       scriptText = fullModule.startScript;
 
       vscode-wrapper = pkgs.vscode-with-extensions.override {
-        inherit (pkgs) vscode;
+        inherit (extra-pkgs.vscode-pkg) vscode;
 
         vscodeExtensions = ([
           # This is an input from the nixpkgs extensions list (works fine)
