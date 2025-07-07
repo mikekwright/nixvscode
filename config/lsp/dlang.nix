@@ -20,6 +20,9 @@
     dmd
     # This is the dlang package manager
     dub
+
+    # This is the d language server
+    serve-d
   ];
 
   vscodeSettings = {
@@ -28,6 +31,18 @@
       "editor.rulers" = [ 100 120 ];
       "outline.showTypeParameters" = true;
     };
+
+    "d.dubCompiler" = "dmd";
+    "d.stdlibPath" = "auto";
+    "d.servedPath" = "${pkgs.serve-d}/bin/serve-d";
+    "d.enableFormatting" = true;
+    "d.enableLinting" = true;
+    "d.enableDebugging" = true;
+    "d.enableAutoComplete" = true;
+    "d.enableCoverageDecoration" = true;
+
+    # Going to use the path one so it can be updated
+    # "d.dmdPath" = "${pkgs.dmd}/bin/dmd";
 
     # This is the bridge so that the Test explorer uses vscode native solution
     "testExplorer.useNativeTesting" = true;

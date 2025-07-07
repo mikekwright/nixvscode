@@ -29,5 +29,13 @@
     };
 
     "go.toolsManagement.autoUpdate" = true;
+    "go.formatTool" = "gofmt";
+    "go.useLanguageServer" = true;
+
+    "go.enableCodeLens" = {
+      "runtest" = true;
+      "references" = true;
+      "gcDetails" = true;
+    };
   };
 }

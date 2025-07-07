@@ -58,5 +58,28 @@
     "python.analysis.typeCheckingMode" = "standard";
     "python.analysis.inlayHints.functionReturnTypes" = true;
     "python.analysis.inlayHints.variableTypes" = true;
+
+    # This give copilot generated summaries
+    "python.analysis.addHoverSummaries" = true;
+    # Add pytest support in pylance
+    "python.analysis.enablePytestSupport" = true;
+
+    # This enhances the doc flow to allow for goto if it looks like a module
+    #   going to start with this disabled
+    "python.analysis.gotoDefinitionInStringLiteral" = false;
+
+    # This is a marketing thing for A/B testing, if we want that, but will have it disabled now
+    "python.experiments.enabled" = false;
+
+    "python.analysis.fixAll" = [
+      "source.unusedImports"
+      "source.convertImportFormat"
+    ];
+
+    "python.analysis.aiCodeActions" = {
+      "generateDocstring" = true;
+      "convertFormatString" = true;
+      "generateSymbol" = true;
+    };
   };
 }
