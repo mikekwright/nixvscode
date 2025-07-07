@@ -29,6 +29,7 @@
     ./shell.nix
     ./terraform.nix
     ./typescript.nix
+    ./zig.nix
   ];
 
   packages = with pkgs; [
