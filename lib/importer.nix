@@ -198,8 +198,12 @@ in {
           categories = [ "TextEditor" "Development" "IDE" ];
           keywords = [ "vscode" ];
           mimeTypes = [
-            "application/x-code-insiders-workspace"
             "application/x-code-workspace"
+            "application/vscode"
+            "x-scheme-handler/vscode"
+
+            # Just adding insiders just in case
+            "application/x-code-insiders-workspace"
           ];
           actions = {
             "new-emtpy-window" = {
