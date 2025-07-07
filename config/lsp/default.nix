@@ -18,6 +18,7 @@
     ./haskell.nix
     ./java.nix
     ./lua.nix
+    ./markdown.nix
     ./nix.nix
 
     ./ocaml.nix
