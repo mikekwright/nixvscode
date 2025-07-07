@@ -23,7 +23,7 @@
   vscodeSettings = {
     "[cpp]" = {
       "editor.tabSize" = 2;
-      "editor.rules" = [ 100 120 ];
+      "editor.rulers" = [ 100 120 ];
       "outline.showTypeParameters" = true;
     };
   };

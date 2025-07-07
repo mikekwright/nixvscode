@@ -70,7 +70,8 @@ in {
       scriptText = fullModule.startScript;
 
       vscode-wrapper = pkgs.vscode-with-extensions.override {
-        vscode = pkgs.vscode-fhs;
+        inherit (pkgs) vscode;
+
         vscodeExtensions = ([
           # This is an input from the nixpkgs extensions list (works fine)
           #pkgs.vscode-extensions.ziglang.vscode-zig
@@ -88,6 +89,8 @@ in {
         runtimeInputs = [
           #pkgs.vscode
           vscode-wrapper
+          # pkgs.ubuntu-sans-mono
+          # pkgs.nerd-fonts.droid-sans-mono
         ] ++ modulePackages;
 
 
@@ -173,8 +176,8 @@ in {
             chmod 444 "$HOME/.config/Code/User/keybindings.json"
 
             # Run VSCode with the User's directory
-            echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
-            ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
+            echo "${pkgs.vscode}/bin/code"
+            ${vscode-wrapper}/bin/code "$@"
           fi
         '';
       };

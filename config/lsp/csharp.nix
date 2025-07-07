@@ -18,15 +18,13 @@
   vscodeSettings = {
     "[csharp]" = {
       "editor.tabSize" = 2;
-      "editor.rules" = [ 100 120 ];
+      "editor.rulers" = [ 100 120 ];
       "outline.showTypeParameters" = true;
     };
 
     # This is the C# language server configuration for VSCode
     "omnisharp.useModernNet" = true;
-    "omnisharp.enableRoslynAnalyzers" = true;
     "omnisharp.enableEditorConfigSupport" = true;
-    "omnisharp.organizeImportsOnFormat" = true;
     "omnisharp.autoStart" = true;
   };
 

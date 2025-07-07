@@ -13,6 +13,9 @@
   ];
 
   vscodeSettings = {
+    # "editor.fontFamily" = "Fira Code, monospace";
+    # "terminal.integrated.fontFamily" = "'Fira Code', monospace";
+
     "explorer.excludeGitIgnore" = true;
     "editor.insertSpaces" = true;
     "editor.detectIndentation" = false;
@@ -34,12 +37,12 @@
 
     "files.trimTrailingWhitespace" = true;
     "editor.lineNumbers" = "relative";
-    macros = {
-      fileExplorerSelect = [
-        "list.select"
-        "workbench.action.toggleSidebarVisibility"
-      ];
-    };
+    # macros = {
+    #   fileExplorerSelect = [
+    #     "list.select"
+    #     "workbench.action.toggleSidebarVisibility"
+    #   ];
+    # };
     "[markdown]" = {
       "editor.formatOnSave" = true;
       "editor.wordWrap" = "on";
@@ -58,7 +61,6 @@
     };
     "explorer.confirmDelete" = false;
     "gitlens.keymap" = "chorded";
-    "gitlens.historyExplorer.enabled" = true;
     "files.eol" = "\n";
     "terminal.integrated.defaultProfile.windows" = "Powershell";
     "terminal.integrated.profiles.windows" = {
@@ -117,7 +119,6 @@
     };
     "editor.useTabStops" = false;
     "breadcrumbs.enabled" = true;
-    "gitlens.views.fileHistory.enabled" = true;
     "editor.tabSize" = 2;
 
     "[proto3]" = {
@@ -137,18 +138,12 @@
     "workbench.list.defaultFindMode" = "highlight";
     "workbench.list.typeNavigationMode" = "automatic";
     "editor.suggestSelection" = "first";
-    "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
-    "atlascode.jira.workingSite" = {
-      baseUrlSuffix = "atlassian.net";
-    };
+    # "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
+    # "atlascode.jira.workingSite" = {
+    #   baseUrlSuffix = "atlassian.net";
+    # };
     "terminal.integrated.shell.windows" = "C:\\Program Files\\PowerShell\\7\\pwsh.exe";
-    "sync.forceUpload" = true;
-    "settingsSync.ignoredExtensions" = [
-      "dart-code.flutter"
-      "dart-code.dart-code"
-    ];
-    "kite.showWelcomeNotificationOnStartup" = false;
-    "dart.flutterSdkPath" = "C:\\Development\\Tools\\flutter";
+    # "sync.forceUpload" = true;
     "debug.openDebug" = "openOnDebugBreak";
     
     "[jsonc]" = {
@@ -161,46 +156,32 @@
     };
     "terminal.integrated.gpuAcceleration" = "canvas";
     "editor.inlineSuggest.enabled" = true;
-    "remote.SSH.defaultExtensions" = [
-      "gitpod.gitpod-remote-ssh"
-    ];
-    "remote.SSH.configFile" = "/var/folders/g2/wvkymszx3ng1bkq6bwm_kgg00000gn/T/gitpod_ssh_config-64177-JztmirHqgtdz";
+    # "remote.SSH.defaultExtensions" = [
+    #   "gitpod.gitpod-remote-ssh"
+    # ];
+    # "remote.SSH.configFile" = "/var/folders/g2/wvkymszx3ng1bkq6bwm_kgg00000gn/T/gitpod_ssh_config-64177-JztmirHqgtdz";
     "git.autofetch" = true;
     "[json]" = {
       "editor.defaultFormatter" = "vscode.json-language-features";
     };
-    "markdownlint.config" = {
-      default = true;
-      MD003 = {
-        style = "setext_with_atx";
-      };
-      MD007 = {
-        indent = 2;
-      };
-      MD046 = {
-        style = "indented";
-      };
-      no-hard-tabs = false;
-    };
     "debug.allowBreakpointsEverywhere" = true;
-    "githubPullRequests.terminalLinksHandler" = "github";
     "editor.inlayHints.enabled" = false;
-    "projectManager.git.baseFolders" = [
-      "~/Development/"
-    ];
-    "vscode-pets.petSize" = "medium";
-    "vscode-pets.petType" = "dog";
-    "arduino.useArduinoCli" = true;
+    # "projectManager.git.baseFolders" = [
+    #   "~/Development/"
+    # ];
+    # "vscode-pets.petSize" = "medium";
+    # "vscode-pets.petType" = "dog";
+    # "arduino.useArduinoCli" = true;
     "git.openRepositoryInParentFolders" = "never";
 
     "dotnet.completion.showCompletionItemsFromUnimportedNamespaces" = true;
-    "remote.SSH.remotePlatform" = {
-      "*.gitpod.io" = "linux";
-    };
+    # "remote.SSH.remotePlatform" = {
+    #   "*.gitpod.io" = "linux";
+    # };
     "debug.onTaskErrors" = "showErrors";
     "github.copilot.selectedCompletionModel" = "";
     "github.copilot.nextEditSuggestions.enabled" = true;
-    "terminal.integrated.fontFamily" = "monospace";
+    #"terminal.integrated.fontFamily" = "monospace";
   };
 
 

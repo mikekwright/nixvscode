@@ -20,7 +20,7 @@
 
   vscodeSettings = {
     "[go]" = {
-      "editor.tabsize" = 2;
+      "editor.tabSize" = 2;
       "editor.rulers" = [
         100
         120

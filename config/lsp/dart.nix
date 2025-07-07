@@ -25,5 +25,7 @@
       "editor.tabCompletion" = "onlySnippets";
       "editor.wordBasedSuggestions" = "off";
     };
+
+    # "dart.flutterSdkPath" = "C:\\Development\\Tools\\flutter";
   };
 }

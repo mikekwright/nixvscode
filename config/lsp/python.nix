@@ -58,6 +58,5 @@
     "python.analysis.typeCheckingMode" = "standard";
     "python.analysis.inlayHints.functionReturnTypes" = true;
     "python.analysis.inlayHints.variableTypes" = true;
-    "python.jediEnabled" = false;
   };
 }
