@@ -188,10 +188,26 @@ in {
       buildCommand = let
         desktopEntry = pkgs.makeDesktopItem {
           # Using this name as this is the one the mimetype uses to open things
-          name = "vscode";
+          name = desktopname;
+          comment = "Code Editing. Redefined.";
+          icon = "vscode";
           desktopName = "Visual Studio Code";
+          genericName = "Text Editor";
           exec = "${vscodeApp}/bin/${executable} %f";
           terminal = false;
+          categories = [ "TextEditor" "Development" "IDE" ];
+          keywords = [ "vscode" ];
+          mimeTypes = [
+            "application/x-code-insiders-workspace"
+            "application/x-code-workspace"
+          ];
+          actions = {
+            "new-emtpy-window" = {
+              name = "New Empty Window";
+              exec = "${vscodeApp}/bin/${executable} --new-window %f";
+              icon = "vscode";
+            };
+          };
         };
       in ''
         mkdir -p $out/bin
