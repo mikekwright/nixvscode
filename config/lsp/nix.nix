@@ -21,7 +21,7 @@
   vscodeSettings = {
     "[nix]" = {
       "editor.tabSize" = 2;
-      "editor.rulers" = [ 80 120 ];
+      "editor.rulers" = [ 100 120 ];
       "editor.formatOnType" = true;
     };
 
