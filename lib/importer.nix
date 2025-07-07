@@ -189,7 +189,7 @@ in {
           inherit name;
           desktopName = "Visual Studio Code";
           exec = "${vscodeApp}/bin/${name} %f";
-          terminal = true;
+          terminal = false;
         };
       in ''
         mkdir -p $out/bin
