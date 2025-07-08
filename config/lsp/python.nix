@@ -21,6 +21,22 @@
     # This is the ruff formatter (much faster)
     #    https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
     vscode-marketplace.charliermarsh.ruff
+
+    # This is the jupyter notebook extension needed for running notebooks
+    #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
+    vscode-marketplace.ms-toolsai.jupyter
+
+    # This includes the slideshow cell in notebooks
+    #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-slideshow
+    vscode-marketplace.ms-toolsai.vscode-jupyter-slideshow
+
+    # This adds tags for the notebook flow
+    #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-cell-tags
+    vscode-marketplace.ms-toolsai.vscode-jupyter-cell-tags
+
+    # This is more of the advanced rendering for notebooks
+    #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers
+    vscode-marketplace.ms-toolsai.jupyter-renderers
   ];
 
   packages = with pkgs; [
