@@ -34,8 +34,6 @@
 
     "go.enableCodeLens" = {
       "runtest" = true;
-      "references" = true;
-      "gcDetails" = true;
     };
   };
 }

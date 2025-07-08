@@ -30,7 +30,7 @@
 
   vscodeSettings = {
     "[zig]" = {
-      "editor.defaultFormatter" = "zls";
+      "editor.defaultFormatter" = "ziglang.vscode-zig";
       "editor.formatOnSave" = true;
       "editor.tabSize" = 2;
       "editor.rulers" = [ 100 120 ];

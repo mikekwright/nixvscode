@@ -26,6 +26,7 @@
       "editor.wordBasedSuggestions" = "off";
     };
 
+    "dart.openDevTools" = "flutter";
     # "dart.flutterSdkPath" = "C:\\Development\\Tools\\flutter";
   };
 }

@@ -55,7 +55,6 @@
     "typescript.validate.enable" = true;
 
     "eslint.nodePath" = "${pkgs.nodejs_22}/lib/node_modules";
-    "eslint.packageManager" = "npm";
     "eslint.runtime" = "${pkgs.nodejs_22}/bin/node";
 
     # Enable eslint for typescript

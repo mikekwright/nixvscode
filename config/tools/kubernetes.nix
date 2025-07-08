@@ -17,4 +17,9 @@
     # Using kubectl operations
     kubectl
   ];
+
+  vscodeSettings = {
+    "vscode-kubernetes.helm-path" = "${pkgs.helm}/bin/helm";
+    "vscode-kubernetes.kubectl-path" = "${pkgs.kubectl}/bin/kubectl";
+  };
 }

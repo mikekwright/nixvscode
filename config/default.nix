@@ -82,7 +82,7 @@
         source = "Git Bash";
       };
     };
-    "terminal.integrated.defaultProfile.linux" = "flathub-fish";
+    "terminal.integrated.defaultProfile.linux" = "bash";
     "terminal.integrated.profiles.linux" = {
       bash = {
         path = "bash";
@@ -130,11 +130,7 @@
       ];
     };
 
-    vs-kubernetes = {
-      "vs-kubernetes.minikube-path" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
-      "vscode-kubernetes.helm-path.linux" = "/home/mikewright/.vs-kubernetes/tools/helm/linux-amd64/helm";
-      "vscode-kubernetes.minikube-path.linux" = "/home/mikewright/.vs-kubernetes/tools/minikube/linux-amd64/minikube";
-    };
+
     "workbench.list.defaultFindMode" = "highlight";
     "workbench.list.typeNavigationMode" = "automatic";
     "editor.suggestSelection" = "first";
@@ -145,16 +141,12 @@
     "terminal.integrated.shell.windows" = "C:\\Program Files\\PowerShell\\7\\pwsh.exe";
     # "sync.forceUpload" = true;
     "debug.openDebug" = "openOnDebugBreak";
-    
+
     "[jsonc]" = {
       "editor.defaultFormatter" = "vscode.json-language-features";
     };
     "terminal.integrated.inheritEnv" = false;
-    "dart.openDevTools" = "flutter";
-    "workbench.editorAssociations" = {
-      "*.ipynb" = "jupyter.notebook.ipynb";
-    };
-    "terminal.integrated.gpuAcceleration" = "canvas";
+    "terminal.integrated.gpuAcceleration" = "auto";
     "editor.inlineSuggest.enabled" = true;
     # "remote.SSH.defaultExtensions" = [
     #   "gitpod.gitpod-remote-ssh"
@@ -165,7 +157,7 @@
       "editor.defaultFormatter" = "vscode.json-language-features";
     };
     "debug.allowBreakpointsEverywhere" = true;
-    "editor.inlayHints.enabled" = false;
+    "editor.inlayHints.enabled" = "offUnlessPressed";
     # "projectManager.git.baseFolders" = [
     #   "~/Development/"
     # ];

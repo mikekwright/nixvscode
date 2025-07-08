@@ -48,6 +48,10 @@
       };
     };
 
+    "workbench.editorAssociations" = {
+      "*.ipynb" = "jupyter-notebook";
+    };
+
     "notebook.formatOnSave.enabled" = true;
     "notebook.codeActionsOnSave" = {
       "notebook.source.fixAll" = "explicit";
