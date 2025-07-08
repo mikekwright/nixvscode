@@ -37,6 +37,15 @@
       "enableTabCompletions" = true;
       "showStatusBarIcon" = true;
     };
+
+    # This is the language type for the chat instructions that
+    #   are in .vscode/copilot-instructions.md
+    "[instructions]" = {
+      "editor.unicodeHighlight.ambiguousCharacters" = false;
+      "editor.unicodeHighlight.invisibleCharacters" = false;
+      "diffEditor.ignoreTrimWhitespace" = false;
+      "editor.wordWrap" = "on";
+    };
   };
 
 }
