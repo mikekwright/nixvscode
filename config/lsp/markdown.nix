@@ -8,6 +8,15 @@
   ];
 
   vscodeSettings = {
+    "[markdown]" = {
+      "editor.formatOnSave" = true;
+      "editor.renderWhitespace" = "all";
+      "editor.acceptSuggestionOnEnter" = "off";
+      "files.trimTrailingWhitespace" = false;
+      "editor.tabSize" = 2;
+      "editor.rulers" = [ 80 120 ];
+    };
+
     "markdownlint.config" = {
       default = true;
       MD003 = {

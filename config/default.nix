@@ -44,13 +44,7 @@
     #     "workbench.action.toggleSidebarVisibility"
     #   ];
     # };
-    "[markdown]" = {
-      "editor.formatOnSave" = true;
-      "editor.wordWrap" = "on";
-      "editor.renderWhitespace" = "all";
-      "editor.acceptSuggestionOnEnter" = "off";
-      "files.trimTrailingWhitespace" = false;
-    };
+
     "java.errors.incompleteClasspath.severity" = "ignore";
     "gitlens.advanced.messages" = {
       suppressCommitHasNoPreviousCommitWarning = false;
