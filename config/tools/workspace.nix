@@ -5,13 +5,18 @@
 
   keybindings = [
     (funcs.editorVimBinding {
-      key = ", w e";
-      command = "workbench.action.openWorkspaceSettingsFile";
+      key = ", w o";
+      command = "workbench.action.files.openFolder";
     })
 
     (funcs.editorVimBinding {
-      key = ", w s";
-      command = "workbench.action.saveWorkspaceAs";
+      key = ", w r";
+      command = "workbench.action.openRecent";
+    })
+
+    (funcs.editorVimBinding {
+      key = ", w e";
+      command = "workbench.action.openWorkspaceSettingsFile";
     })
 
     (funcs.editorVimBinding {
