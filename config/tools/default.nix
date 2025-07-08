@@ -13,6 +13,7 @@
     ./nginx.nix
 
     ./workspace.nix
+    ./terminal.nix
 
     # This does not work
     # ./whichkey.nix
