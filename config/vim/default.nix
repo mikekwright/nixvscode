@@ -8,7 +8,6 @@
     ./search.nix
     ./rundebug.nix
     ./bookmarks.nix
-    ./agent.nix
     ./code-inspection.nix
     ./file-management.nix
   ];
