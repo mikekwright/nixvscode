@@ -1,80 +1,88 @@
-{ ... }:
+{ funcs, ... }:
 
-let
-  debugKeybinding = { key, command }: {
-    inherit key command;
-    when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable && debugState == 'inactive'";
-  };
-in
 {
-  keybindings = [
+  keybindings = with funcs; [
     #
     # Vim = Run and Debug
     #
-    {
+    (vimKey {
       key = ", r b";
       command = "editor.debug.action.toggleBreakpoint";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debuggersAvailable";
-    }
-
-    {
-      key = ", r r";
-      command = "workbench.action.debug.run";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debugState == 'inactive'";
-    }
-
-    {
-      key = ", r a";
-      command = "debug.addConfiguration";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debugState == 'inactive'";
-    }
-
-    (debugKeybinding {
-      key = ", r d";
-      command = "workbench.action.debug.selectandstart";
+      when = [
+        when.vim-editor
+        when.can-debug
+      ];
     })
 
-    (debugKeybinding {
+    (vimKey {
+      key = ", r r";
+      command = "workbench.action.debug.run";
+      when = [
+        when.vim-editor
+        when.can-debug
+      ];
+    })
+
+    (vimKey {
+      key = ", r a";
+      command = "debug.addConfiguration";
+      when = [
+        when.vim-editor
+        when.not-debug
+      ];
+    })
+
+    (vimKey {
+      key = ", r d";
+      command = "workbench.action.debug.selectandstart";
+      when = [
+        when.vim-editor
+        when.can-debug
+        when.not-debug
+      ];
+    })
+
+    (inDebugBinding {
       key = ", r s";
       command = "workbench.action.debug.stop";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r r";
       command = "workbench.action.debug.continue";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r c";
       command = "workbench.action.debug.continue";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r d";
       command = "workbench.action.debug.start";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r n";
       command = "workbench.action.debug.stepOver";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r i";
       command = "workbench.action.debug.stepInto";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r o";
       command = "workbench.action.debug.stepOut";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r h";
       command = "editor.debug.action.showDebugHover";
     })
 
-    (debugKeybinding {
+    (inDebugBinding {
       key = ", r t";
       command = "workbench.action.debug.toggleRepl";
     })

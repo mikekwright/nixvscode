@@ -3,7 +3,7 @@
 {
   vscodeExtensions = with pkgs; [
     # This is currently my favorite, it is a nice dark looking theme
-    #   
+    #
     vscode-marketplace.github.github-vscode-theme
 
     # These are file-icons that are nice to have in the explorer
@@ -22,11 +22,5 @@
     "workbench.iconTheme" = "file-icons";
   };
 
-
-
   # "vscode-pets.theme" = "forest";
-
-
-
 }
-

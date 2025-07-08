@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, funcs, ... }:
 # Module that contains most of the vim related items that we will work through
 #  This is the general configuration but not everything or every combination of
 #  keyboard shortcut
@@ -28,11 +28,6 @@
     #
     # Vim = General navigation commands
     #
-    {
-      key = ", w f";
-      command = "workbench.action.toggleZenMode";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
     {
       key = ", w h";
       command = "workbench.action.previousEditor";

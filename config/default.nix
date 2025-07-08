@@ -433,11 +433,7 @@
       command = "editor.action.clipboardPasteAction";
       when = "editorTextFocus && !editorReadonly";
     }
-    {
-      key = "ctrl+k z";
-      command = "workbench.action.toggleZenMode";
-      when = "editorTextFocus";
-    }
+
     # {
     #   key = "ctrl+w k";
     #   command = "workbench.action.focusActiveEditorGroup";
