@@ -12,6 +12,8 @@
     ./rest-client.nix
     ./nginx.nix
 
+    ./workspace.nix
+
     # This does not work
     # ./whichkey.nix
   ];

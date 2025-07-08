@@ -9,6 +9,12 @@
     when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled";
   };
 
+  debuggerActiveBinding = { key, command }: {
+    inherit key command;
+
+    when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled && debuggersAvailable && debugState == 'active'";
+  };
+
   languageVimBinding = { lang, key, command }: {
     inherit key command;
 

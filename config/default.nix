@@ -8,8 +8,9 @@
     ./theme.nix
     ./zen-mode.nix
 
-    ./tools
     ./lsp
+
+    ./tools
   ];
 
   vscodeSettings = {
@@ -479,12 +480,5 @@
       key = "ctrl+shift+m";
       command = "-workbench.actions.view.problems";
     }
-
-
-
-
-
-
-
   ];
 }
