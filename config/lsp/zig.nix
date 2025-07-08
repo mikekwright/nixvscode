@@ -10,14 +10,19 @@
 
     # This extension provides support for running/debugging zig
     #    https://marketplace.visualstudio.com/items?itemName=ianic.zig-language-extras
-    #vscode-marketplace.ianic.zig-language-extras
+    vscode-marketplace.ianic.zig-language-extras
 
     # TODO: This fails (July 6th, 2025) so removing this and the zig extra that requires
     #   it
     # Common debug extensions required for debugging Zig (extras)
     #    https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
     #vscode-marketplace.vadimcn.vscode-lldb
-  ];
+  ] ++ (with pkgs.vscode-extensions; [
+    # This is the debug tool needed for rust (lldb) on linux/mac
+    #  (NOTE this has to be on stable, others are broken)
+    #    https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
+    vadimcn.vscode-lldb
+  ]);
 
   packages = with pkgs; [
     # Zig language server and tools
