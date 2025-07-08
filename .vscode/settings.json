@@ -1,2 +1,4 @@
 {
+  "nixEnvSelector.useFlakes": true,
+  "nixEnvSelector.nixFile": "flake.nix"
 }
