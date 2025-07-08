@@ -7,10 +7,14 @@
     vscode-marketplace.devwright.vscode-terminal-capture
   ];
 
+  vscodeSettings = {
+    "terminalCapture.enable" = true;
+  };
+
   keybindings = with funcs; [
     (funcs.vimKey {
       key = "ctrl+w c";
-      command = "extension.terminalCapture.capture";
+      command = "extension.terminalCapture.runCapture";
       when = [
         when.terminal
       ];

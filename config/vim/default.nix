@@ -23,7 +23,7 @@
     "vim.disableExtension" = false;
   };
 
-  keybindings = [
+  keybindings = with funcs; [
     #
     # Vim = General navigation commands
     #
