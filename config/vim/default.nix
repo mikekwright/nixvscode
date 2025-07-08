@@ -58,11 +58,12 @@
       command = "workbench.action.closeSidebar";
       when = "sideBarVisible && editorTextFocus && vim.active && vim.mode != 'Insert'";
     }
-    {
-      key = ", e c";
-      command = "workbench.action.closeSidebar";
-      when = "sideBarVisible && sideBarFocus";
-    }
+    # This is a problem as , won't work in search with this enabled
+    # {
+    #   key = ", e c";
+    #   command = "workbench.action.closeSidebar";
+    #   when = "sideBarVisible && sideBarFocus";
+    # }
     {
       key = ", e e";
       command = "workbench.files.action.focusFilesExplorer";

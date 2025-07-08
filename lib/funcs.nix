@@ -9,5 +9,9 @@
     when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled";
   };
 
+  languageVimBinding = { lang, key, command }: {
+    inherit key command;
 
+    when = "editorLangId == '${lang}' && editorTextFocus && vim.active && vim.mode != 'Insert' && !github.copilot.interactiveSession.disabled && debuggersAvailable && debugState == 'inactive'";
+  };
 }

@@ -23,6 +23,12 @@ in
       when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debugState == 'inactive'";
     }
 
+    {
+      key = ", r a";
+      command = "debug.addConfiguration";
+      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && debugState == 'inactive'";
+    }
+
     (debugKeybinding {
       key = ", r d";
       command = "workbench.action.debug.selectandstart";

@@ -1,4 +1,4 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
@@ -36,4 +36,12 @@
       "runtest" = true;
     };
   };
+
+  keybindings = [
+    (funcs.languageVimBinding {
+      lang = "go";
+      key = ", r b";
+      command = "go.build.workspace";
+    })
+  ];
 }
