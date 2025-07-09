@@ -15,6 +15,7 @@ rec {
     not-debug = "!inDebugMode";
     file-explorer = "explorerViewletVisible && !github.copilot.interactiveSession.disabled";
     terminal = "terminalFocus && !github.copilot.interactiveSession.disabled";
+    language = lang: "editorLangId == '${lang}'";
   };
 
   vimKey = { key, command, when ? [] }: {
@@ -48,7 +49,7 @@ rec {
     inherit key command;
 
     when = [
-      "editorLangId == '${lang}'"
+      (when.language lang)
       when.vim-editor
       when.copilot
     ];
