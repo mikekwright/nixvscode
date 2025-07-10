@@ -54,4 +54,7 @@ rec {
       when.copilot
     ];
   });
+
+  buildLangAiInstructions = lang: texts: map (t: { text = t; language = lang; }) texts;
+  buildAiInstructions = texts: map (t: { text = t; }) texts;
 }

@@ -17,6 +17,9 @@
     "chat.agent.enabled" = true;
     "chat.commandCenter.enabled" = true;
 
+    # This will use the .github/copilot-instructions.md file if one exists.
+    "github.copilot.chat.codeGeneration.useInstructionFiles" = true;
+
     # The below is experimental as of July 5th, 2025
     #   Does not seem to work with nix
     "chat.useFileStorage" = false;
