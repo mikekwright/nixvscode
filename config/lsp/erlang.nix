@@ -8,7 +8,7 @@
 
     # This is the elixir extension (adding with erlang)
     #   https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls
-    (funcs.safePkg vscode-marketplace [ "JakeBecker" "elixir-ls" ])
+    (funcs.safePkg vscode-marketplace [ "jakebecker" "elixir-ls" ])
   ];
 
   packages = with pkgs; [

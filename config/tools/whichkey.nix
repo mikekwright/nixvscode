@@ -1,4 +1,4 @@
-{ extra-pkgs, ... }:
+{ extra-pkgs, funcs, ... }:
 
 {
   # Tried this on July 5th, 2025.  Did not really provide the expected support
@@ -6,7 +6,7 @@
   vscodeExtensions = with extra-pkgs; [
     # This is a whichkey like flow for vscode
     #   https://marketplace.visualstudio.com/items?itemName=VSpaceCode.whichkey
-    vscode-marketplace-release.vspacecode.whichkey
+    (funcs.safePkg vscode-marketplace-release [ "vspacecode" "whichkey" ])
   ];
 
   keybindings = [

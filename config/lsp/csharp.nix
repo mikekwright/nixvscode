@@ -8,7 +8,7 @@
 
     # This is the language extension for C# in VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
-    (funcs.safePkg vscode-marketplace [ ".ms-dotnettools" "csharp" ])
+    (funcs.safePkg vscode-marketplace [ "ms-dotnettools" "csharp" ])
 
     # This is the .NET Runtime extension for VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-runtime

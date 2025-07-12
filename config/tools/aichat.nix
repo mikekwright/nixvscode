@@ -1,4 +1,4 @@
-{ pkgs, extra-pkgs, ... }:
+{ extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
@@ -6,11 +6,11 @@
     #   when started with vscode
     #
     #   https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
-    vscode-marketplace-release.github.copilot
+    (funcs.safePkg vscode-marketplace-release [ "github" "copilot" ])
 
     # You also need the chat plugin
     #   https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat
-    # vscode-marketplace-release.github.copilot-chat
+    (funcs.safePkg vscode-marketplace-release [ "github" "copilot-chat" ])
   ];
 
   vscodeSettings = {

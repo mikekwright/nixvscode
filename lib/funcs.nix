@@ -60,5 +60,12 @@ rec {
 
   # This allows for extensions to be used when existing or null if not found
   #   signarture - attrs (package to find attrs), pkgs-attr (array of the package to find)
-  safePkg = attrs: pkgs-attr: (pkgs.lib.attrsets.attrByPath pkgs-attr null attrs);
+  safePkg = attrs: pkgs-attr:
+    let
+      return-pkg = (pkgs.lib.attrsets.attrByPath pkgs-attr null attrs);
+    in
+      if return-pkg != null then
+        return-pkg
+      else
+        pkgs.lib.trace "Warning: Package '${pkgs.lib.concatMapStrings (x: x + ".") pkgs-attr}' not found." null;
 }

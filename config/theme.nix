@@ -1,18 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with pkgs; [
     # This is currently my favorite, it is a nice dark looking theme
     #
-    vscode-marketplace.github.github-vscode-theme
+    (funcs.safePkg vscode-marketplace [ "github" "github-vscode-theme" ])
 
     # These are file-icons that are nice to have in the explorer
     #    https://marketplace.visualstudio.com/items?itemName=file-icons.file-icons
-    vscode-marketplace.file-icons.file-icons
+    (funcs.safePkg vscode-marketplace [ "file-icons" "file-icons" ])
 
     # This is a nice dark-like theme for VSCode
     #   https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula
-    vscode-marketplace.dracula-theme.theme-dracula
+    (funcs.safePkg vscode-marketplace [ "dracula-theme" "theme-dracula" ])
   ];
 
   vscodeSettings = {

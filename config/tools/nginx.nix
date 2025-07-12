@@ -1,10 +1,10 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # Nginx main extension
     #   https://marketplace.visualstudio.com/items?itemName=nginx.vscode-nginx
-    vscode-marketplace.ahmadalli.vscode-nginx-conf
+    (funcs.safePkg vscode-marketplace [ "ahmadalli" "vscode-nginx-conf" ])
   ];
 
   packages = with pkgs; [

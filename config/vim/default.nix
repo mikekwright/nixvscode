@@ -14,7 +14,7 @@
 
   vscodeExtensions = with pkgs; [
     # Official vim plugin for vscode
-    vscode-marketplace.vscodevim.vim
+    (funcs.safePkg vscode-marketplace [ "vscodevim" "vim" ])
   ];
 
   vscodeSettings = {

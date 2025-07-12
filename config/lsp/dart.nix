@@ -4,11 +4,11 @@
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official dart-lang extension
     #    https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
-    (funcs.safePkg vscode-marketplace [ "Dart-Code" "dart-code" ])
+    (funcs.safePkg vscode-marketplace [ "dart-code" "dart-code" ])
 
     # This is the official flutter extension for flutter development
     #    https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
-    (funcs.safePkg vscode-marketplace [ "Dart-Code" "flutter" ])
+    (funcs.safePkg vscode-marketplace [ "dart-code" "flutter" ])
   ];
 
   vscodeSettings = {
