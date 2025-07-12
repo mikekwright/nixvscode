@@ -47,11 +47,6 @@
 
         # This should go away at some point
         extra-pkgs = {
-          #  This is the other way (supposedly) to use the extensions, but I am going
-          #    to land on just the overlaps to start
-          # extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
-          extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.99";
-
           vscode-pkg = import inputs.vscode-nixpkgs {
             inherit system;
             config.allowUnfree = true;
@@ -60,22 +55,23 @@
 
         debug = import ./lib/debug.nix {inherit pkgs extra-pkgs system;};
         funcs = import ./lib/funcs.nix {inherit debug extra-pkgs pkgs system;};
-        lib = import ./lib/importer.nix {inherit debug extra-pkgs pkgs system;};
+        lib = import ./lib/importer.nix {inherit debug extra-pkgs pkgs system funcs;};
 
-        editor = import ./lib/editors/void.nix {
-          inherit pkgs system;
-        };
+        # vscodeModule = {
+        #   inherit pkgs extra-pkgs;
+        #   # module = import ./config; # import the module directly
 
-        vscodeModule = {
-          inherit pkgs extra-pkgs;
-          module = import ./config; # import the module directly
-
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
-          extraSpecialArgs = {
-            inherit inputs system pkgs debug extra-pkgs funcs;
-          };
-        };
-        vscode = lib.makeModule vscodeModule;
+        #   # You can use `extraSpecialArgs` to pass additional arguments to your module files
+        #   extraSpecialArgs = {
+        #     inherit inputs system pkgs debug extra-pkgs funcs;
+        #   };
+        # };
+        flake-pkgs = lib.makeModule ./config;
+        #   {
+        #   voidpkg = pkgs.vscode;
+        #   codepkg = pkgs.vscode;
+        # };
+          #lib.makeModule vscodeModule;
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
@@ -83,11 +79,14 @@
           #default = mkTestFrom Module vscodeModule;
         };
 
-        packages = {
+        packages = rec {
+          void = flake-pkgs.voidpkg;
+          code = flake-pkgs.codepkg;
+
           # Lets you run `nix run .` to start custom vscode
-          default = vscode;
-          #default = editor;
+          default = code;
         };
       };
     };
 }
+

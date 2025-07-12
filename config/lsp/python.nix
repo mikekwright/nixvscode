@@ -1,42 +1,42 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official python extension
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.python
-    vscode-marketplace.ms-python.python
+    (funcs.safePkg vscode-marketplace [ "ms-python" "python" ])
 
     # This is the official plugin for debugging python
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy
-    vscode-marketplace.ms-python.debugpy
+    (funcs.safePkg vscode-marketplace [ "ms-python" "debugpy" ])
 
     # This is the python language server
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-    #vscode-marketplace.ms-python.vscode-pylance
+    (funcs.safePkg vscode-marketplace [ "ms-python" "vscode-pylance" ])
 
     # This is the black formatter
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
-    vscode-marketplace.ms-python.black-formatter
+    (funcs.safePkg vscode-marketplace [ "ms-python" "black-formatter" ])
 
     # This is the ruff formatter (much faster)
     #    https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
-    vscode-marketplace.charliermarsh.ruff
+    (funcs.safePkg vscode-marketplace [ "charliermarsh" "ruff" ])
 
     # This is the jupyter notebook extension needed for running notebooks
     #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
-    vscode-marketplace.ms-toolsai.jupyter
+    (funcs.safePkg vscode-marketplace [ "ms-toolsai" "jupyter" ])
 
     # This includes the slideshow cell in notebooks
     #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-slideshow
-    vscode-marketplace.ms-toolsai.vscode-jupyter-slideshow
+    (funcs.safePkg vscode-marketplace [ "ms-toolsai" "vscode-jupyter-slideshow" ])
 
     # This adds tags for the notebook flow
     #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-jupyter-cell-tags
-    vscode-marketplace.ms-toolsai.vscode-jupyter-cell-tags
+    (funcs.safePkg vscode-marketplace [ "ms-toolsai" "vscode-jupyter-cell-tags" ])
 
     # This is more of the advanced rendering for notebooks
     #    https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers
-    vscode-marketplace.ms-toolsai.jupyter-renderers
+    (funcs.safePkg vscode-marketplace [ "ms-toolsai" "jupyter-renderers" ])
   ];
 
   packages = with pkgs; [

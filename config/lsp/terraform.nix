@@ -1,10 +1,10 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official hashicorp terraform extension
     #    https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
-    vscode-marketplace.hashicorp.terraform
+    (funcs.safePkg vscode-marketplace [ "hashicorp" "terraform" ])
   ];
 
   packages = with pkgs; [
