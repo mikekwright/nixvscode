@@ -61,6 +61,10 @@
         funcs = import ./lib/funcs.nix {inherit debug extra-pkgs pkgs system;};
         lib = import ./lib/importer.nix {inherit debug extra-pkgs pkgs system;};
 
+        editor = import ./lib/editors/void.nix {
+          inherit pkgs system;
+        };
+
         vscodeModule = {
           inherit pkgs extra-pkgs;
           module = import ./config; # import the module directly
@@ -80,7 +84,8 @@
 
         packages = {
           # Lets you run `nix run .` to start custom vscode
-          default = vscode;
+          # default = vscode;
+          default = editor;
         };
       };
     };
