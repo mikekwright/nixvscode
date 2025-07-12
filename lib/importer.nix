@@ -1,4 +1,4 @@
-{ pkgs, debug, extra-pkgs, ... }:
+{ pkgs, debug, extra-pkgs, system, ... }:
 
 let
   loadImports = m: args:
@@ -39,6 +39,12 @@ let
       }) baseModule loadedChildren;
     in debug.trace completedMerge completedMerge;
 
+  void-editor = import ./editors/void.nix {
+    inherit pkgs system;
+  };
+
+  executable = "void";
+  #executable = "code";
 in {
   makeModule = m:
     let
@@ -48,7 +54,7 @@ in {
 
       # Module packages are any other 3rd party packages that are needed when running vscode
       modulePackages = if builtins.hasAttr "packages" fullModule then
-        fullModule.packages
+        pkgs.lib.lists.unique fullModule.packages
       else
         [ ];
 
@@ -80,9 +86,10 @@ in {
       scriptText = fullModule.startScript;
 
       vscode-wrapper = pkgs.vscode-with-extensions.override {
-        inherit (extra-pkgs.vscode-pkg) vscode;
+        # inherit (extra-pkgs.vscode-pkg) vscode;
+        vscode = void-editor;
 
-        vscodeExtensions = ([
+        vscodeExtensions = pkgs.lib.lists.unique ([
           # This is an input from the nixpkgs extensions list (works fine)
           #pkgs.vscode-extensions.ziglang.vscode-zig
 
@@ -91,11 +98,12 @@ in {
 
           # This is an example of an non-opensource extensions
           #pkgs.vscode-marketplace.golang.go
-        ]) ++ fullModule.vscodeExtensions;
+        ] ++ (builtins.filter (x: x != null) fullModule.vscodeExtensions));
+        # NOTE: We added the above filter so the check function can return null
       };
 
       vscodeApp = pkgs.writeShellApplication {
-        name = "code";
+        name = executable; # "code";
         runtimeInputs = [ vscode-wrapper pkgs.jq ] ++ modulePackages;
 
         #
@@ -149,7 +157,7 @@ in {
 
               # Run VSCode with the Nix-managed user data directory
               echo "${pkgs.vscode}/bin/code --user-data-dir=$TEMP_USER_DATA_DIR"
-              ${vscode-wrapper}/bin/code --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
+              ${vscode-wrapper}/bin/${executable} --user-data-dir="$TEMP_USER_DATA_DIR" "$@"
 
               if [[ -z $SKIP_VSCODE_CLEAN ]]; then
                 # Clean up the temporary directory when VSCode exits
@@ -192,14 +200,16 @@ in {
 
               # Run VSCode with the User's directory
               echo "${pkgs.vscode}/bin/code"
-              ${vscode-wrapper}/bin/code "$@"
+              ${vscode-wrapper}/bin/${executable} "$@"
             fi
           '';
       };
 
     in pkgs.stdenv.mkDerivation rec {
+      inherit executable;
       desktopname = "vscode";
-      executable = "code";
+
+      # executable =  "code";
       name = executable;
 
       buildCommand = let
@@ -239,4 +249,3 @@ in {
       dontBuild = true;
     };
 }
-

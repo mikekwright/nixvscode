@@ -49,7 +49,8 @@
         extra-pkgs = {
           #  This is the other way (supposedly) to use the extensions, but I am going
           #    to land on just the overlaps to start
-          extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
+          # extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
+          extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.99";
 
           vscode-pkg = import inputs.vscode-nixpkgs {
             inherit system;
@@ -84,8 +85,8 @@
 
         packages = {
           # Lets you run `nix run .` to start custom vscode
-          # default = vscode;
-          default = editor;
+          default = vscode;
+          #default = editor;
         };
       };
     };

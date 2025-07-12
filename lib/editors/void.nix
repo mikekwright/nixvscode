@@ -80,6 +80,8 @@ in
       runHook postInstall
     '';
 
+    executableName = "void";
+
     meta = with pkgs.lib; {
       description = "Void Editor which is an open-source, ai powered editor replacing cursor";
       homepage = "https://voideditor.com/";

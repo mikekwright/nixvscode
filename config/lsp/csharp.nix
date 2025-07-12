@@ -12,7 +12,7 @@
 
     # This is the .NET Runtime extension for VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-runtime
-    vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
+    # vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
   ];
 
   vscodeSettings = {

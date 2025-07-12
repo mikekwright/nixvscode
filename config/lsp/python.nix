@@ -12,7 +12,7 @@
 
     # This is the python language server
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-    vscode-marketplace.ms-python.vscode-pylance
+    #vscode-marketplace.ms-python.vscode-pylance
 
     # This is the black formatter
     #    https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
