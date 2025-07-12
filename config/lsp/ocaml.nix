@@ -1,10 +1,10 @@
-{ pkgs, extra-pkgs, funcs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the ocaml extension for vscode
     #    https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform
-    (funcs.safePkg vscode-marketplace [ "ocamllabs" "ocaml-platform" ])
+    vscode-marketplace.ocamllabs.ocaml-platform
   ];
 
   packages = with pkgs; [

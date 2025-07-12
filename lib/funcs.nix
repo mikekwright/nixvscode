@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 # This module defines some of the useful and shared components that can be
 #   used when helping to build vscode extensions or keybindings.
@@ -57,8 +57,4 @@ rec {
 
   buildLangAiInstructions = lang: texts: map (t: { text = t; language = lang; }) texts;
   buildAiInstructions = texts: map (t: { text = t; }) texts;
-
-  # This allows for extensions to be used when existing or null if not found
-  #   signarture - attrs (package to find attrs), pkgs-attr (array of the package to find)
-  safePkg = attrs: pkgs-attr: (pkgs.lib.attrsets.attrByPath pkgs-attr null attrs);
 }

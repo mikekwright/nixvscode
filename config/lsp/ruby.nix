@@ -1,4 +1,4 @@
-{ pkgs, extra-pkgs, funcs, ... }:
+{ pkgs, extra-pkgs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
@@ -9,7 +9,7 @@
 
     # This is the language server for ruby
     #    https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp
-    (funcs.safePkg vscode-marketplace [ "shopify" "ruby-lsp" ])
+    vscode-marketplace.shopify.ruby-lsp
   ];
 
   packages = with pkgs; [

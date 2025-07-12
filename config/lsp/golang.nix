@@ -4,7 +4,7 @@
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the official go plugin for vscode
     #   https://marketplace.visualstudio.com/items?itemName=golang.Go
-    (funcs.safePkg vscode-marketplace [ "golang" "go" ])
+    vscode-marketplace.golang.go
   ];
 
   packages = with pkgs; [
