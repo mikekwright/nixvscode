@@ -185,11 +185,12 @@ in
 
         buildCommand = let
           desktopEntry = pkgs.makeDesktopItem {
+            inherit desktopName;
+
             # Using this name as this is the one the mimetype uses to open things
             name = executable;
             comment = "Code Editing. Redefined.";
             icon = "vscode";
-            desktopName = "Visual Studio Code";
             genericName = "Text Editor";
             exec = "${app}/bin/${executable} %f";
             terminal = false;
