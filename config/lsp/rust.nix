@@ -3,12 +3,12 @@
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # This is the main rust extension for vscode
-    open-vsx-release.rust-lang.rust-analyzer
-  ] ++ (with pkgs.vscode-extensions; [
+    (funcs.safePkg open-vsx-release [ "rust-lang" "rust-analyzer" ])
+  ] ++ (with pkgs; [
     # This is the debug tool needed for rust (lldb) on linux/mac
     #  (NOTE this has to be on stable, others are broken)
     #    https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
-    vadimcn.vscode-lldb
+    (funcs.safePkg vscode-extensions [ "vadimcn" "vscode-lldb" ])
   ]);
 
   packages = with pkgs; [

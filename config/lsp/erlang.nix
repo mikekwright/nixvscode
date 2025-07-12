@@ -1,14 +1,14 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # Erlang main extension
     #   https://marketplace.visualstudio.com/items?itemName=pgourlain.erlang
-    vscode-marketplace.pgourlain.erlang
+    (funcs.safePkg vscode-marketplace [ "pgourlain" "erlang" ])
 
     # This is the elixir extension (adding with erlang)
     #   https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls
-    vscode-marketplace.jakebecker.elixir-ls
+    (funcs.safePkg vscode-marketplace [ "JakeBecker" "elixir-ls" ])
   ];
 
   packages = with pkgs; [

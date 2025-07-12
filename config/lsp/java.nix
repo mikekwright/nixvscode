@@ -1,4 +1,4 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
@@ -8,7 +8,7 @@
 
     # This is the redhad java extension and has a lot more download (maybe better?)
     #    https://marketplace.visualstudio.com/items?itemName=redhat.java
-    vscode-marketplace.redhat.java
+    (funcs.safePkg vscode-marketplace [ "redhat" "java" ])
   ];
 
   packages = with pkgs; [

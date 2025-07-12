@@ -1,18 +1,19 @@
-{ pkgs, extra-pkgs, ... }:
+{ pkgs, extra-pkgs, funcs, ... }:
 
 {
   vscodeExtensions = with extra-pkgs.extensions; [
     # C# Dev Kit, needed for C# development in VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
-    vscode-marketplace.ms-dotnettools.csdevkit
+    (funcs.safePkg vscode-marketplace [ "ms-dotnettools" "csdevkit" ])
 
     # This is the language extension for C# in VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
-    vscode-marketplace.ms-dotnettools.csharp
+    (funcs.safePkg vscode-marketplace [ ".ms-dotnettools" "csharp" ])
 
     # This is the .NET Runtime extension for VSCode
     #    https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-runtime
-    vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
+    # (pkgs.lib.attrsets.attrByPath  [ "ms-dotnettools" "vscode-dotnet-runtime" ] null vscode-marketplace)
+    (funcs.safePkg vscode-marketplace [ "ms-dotnettools" "vscode-dotnet-runtime" ])
   ];
 
   vscodeSettings = {
