@@ -20,14 +20,19 @@
     buildah
 
     # Using helm management as well
-    helm
+    #helm
 
     # Using kubectl operations
     kubectl
-  ];
+  ] ++ (
+    if (builtins.elem system pkgs.lib.platforms.linux) then
+      [ pkgs.helm ]
+    else
+      [ ]  # No helm for mac right now
+  );
 
   vscodeSettings = {
-    "vscode-kubernetes.helm-path" = "${pkgs.helm}/bin/helm";
+    # "vscode-kubernetes.helm-path" = "${pkgs.helm}/bin/helm";
     "vscode-kubernetes.kubectl-path" = "${pkgs.kubectl}/bin/kubectl";
   };
 }

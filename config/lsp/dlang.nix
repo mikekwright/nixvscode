@@ -3,8 +3,8 @@
 let
   system-maps = {
     x86_64-linux = "linux-x86_64";
-    aarch64-darwin = "osx-arm64";
-    x86_64-darwin= "osx-x86_64";
+    # aarch64-darwin = "osx-arm64";
+    # x86_64-darwin= "osx-x86_64";
   };
 
   # DCD is the D language code completion daemon, which is used by the D language
@@ -41,7 +41,7 @@ let
     meta = with pkgs.lib; {
       description = "DCD is a D language code completion daemon.";
       homepage = "https://github.com/dlang-community/DCD";
-      platforms = platforms.linux ++ platforms.darwin;
+      platforms = platforms.linux; # ++ platforms.darwin;
     };
   };
 in {
@@ -61,19 +61,27 @@ in {
   ];
 
   packages = with pkgs; [
-    dmd
+    #dmd
+    #gdc
     # This is the dlang package manager
     dub
 
     # This is the d language server
     serve-d
-
-    dcd-package
-  ] ++ (
+  ] ++
+    (if (builtins.elem system pkgs.lib.platforms.linux) then 
+        [  # Linux packages
+          pkgs.dmd    
+          pkgs.dcd-package
+        ]
+      else 
+        [ pkgs.gdc ]   # Mac package to use
+  ) ++ (
     if builtins.hasAttr system system-maps
       then [ dcd-package]
       else []
     ); # This is the dcd package, which is used by code-d
+
 
   vscodeSettings = {
     "[dlang]" = {

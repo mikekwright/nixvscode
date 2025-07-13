@@ -37,11 +37,17 @@ in {
     vscode-module = module-shared vscode-extra-pkgs false;
     void-module = module-shared void-extra-pkgs true;
 
+    root-user-dir =
+      if (builtins.elem system pkgs.lib.platforms.darwin) then
+        "$HOME/Library/Application Support"
+      else
+        "$HOME/.config";
+
     codepkg = make-app-module vscode-module {
       vscode-pkg = vscode-extra-pkgs.vscode-pkg.vscode;
       executable = "code";
       desktopName = "Visual Studio Code";
-      userDataDir = "$HOME/.config/Code";
+      userDataDir = "${root-user-dir}/Code";
       mimeTypes = [
         "application/x-code-workspace"
         "application/vscode"
@@ -56,7 +62,7 @@ in {
       vscode-pkg = void-editor;
       executable = "void";
       desktopName = "Void Editor";
-      userDataDir = "$HOME/.config/Void";
+      userDataDir = "${root-user-dir}/Void";
       mimeTypes = [
         "application/x-void-workspace"
         "application/void"

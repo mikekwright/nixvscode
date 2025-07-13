@@ -86,12 +86,12 @@ let
       echo "using user data directory: $USER_DATA_DIR"
       if [[ -n $CODE_TEMP_DIR ]]; then
         TEMP_USER_DATA_DIR=$(mktemp -d)
-        mkdir -p "$TEMP_USER_DATA_DIR/User"
         echo "using temporary vscode user data directory: $TEMP_USER_DATA_DIR"
-
         USER_DATA_DIR="$TEMP_USER_DATA_DIR"
         # NOTE: Can not cleanup the temp directory until app is closed
       fi
+
+      mkdir -p "$USER_DATA_DIR/User"
 
       ${scriptText}
 
@@ -169,14 +169,9 @@ in
       };
 
       app = make-code-app {
-        inherit executable userDataDir;
+        inherit executable userDataDir modulePackages settingsJson keybindingsJson extensionsJson scriptText;
 
         app-wrapper = wrapper;
-        modulePackages = modulePackages;
-        settingsJson = settingsJson;
-        keybindingsJson = keybindingsJson;
-        extensionsJson = extensionsJson;
-        scriptText = scriptText;
       };
    in
       pkgs.stdenv.mkDerivation rec {
