@@ -15,6 +15,8 @@
     ./workspace.nix
     ./terminal.nix
 
+    ./ollama.nix
+
     # This does not work
     # ./whichkey.nix
   ];

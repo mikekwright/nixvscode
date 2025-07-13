@@ -72,7 +72,7 @@ in {
     (if (builtins.elem system pkgs.lib.platforms.linux) then 
         [  # Linux packages
           pkgs.dmd    
-          pkgs.dcd-package
+          dcd-package
         ]
       else 
         [ pkgs.gdc ]   # Mac package to use
