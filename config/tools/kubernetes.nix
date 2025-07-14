@@ -13,6 +13,10 @@
     # This is some other container tools from microsoft
     #    https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-containers
     (funcs.safePkg vscode-marketplace [ "ms-azuretools" "vscode-containers" ])
+
+    # This is needed for the kubernetes extension to work
+    #    https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+    (funcs.safePkg vscode-marketplace [ "redhat" "vscode-yaml" ])
   ];
 
   packages = with pkgs; [
