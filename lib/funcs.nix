@@ -32,7 +32,6 @@ rec {
 
     when = [
       when.vim-editor
-      when.copilot
     ];
   });
 
@@ -51,7 +50,6 @@ rec {
     when = [
       (when.language lang)
       when.vim-editor
-      when.copilot
     ];
   });
 
