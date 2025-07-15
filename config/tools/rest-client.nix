@@ -10,5 +10,8 @@
   vscodeSettings = {
     # Disable telemetry for the rest-client extension
     "rest-client.enableTelemetry" = false;
+
+    "rest-client.logLevel" = "info";  # "verbose", "warn", "info", "error"
+    "rest-client.previewOption" = "full";  # "body", "exchange", "headers", "full"
   };
 }
