@@ -26,7 +26,7 @@
     # Using helm management as well
     #helm
 
-    # Using kubectl operations
+    # Using kubectl operationjs
     kubectl
   ] ++ (
     if (builtins.elem system pkgs.lib.platforms.linux) then
@@ -38,5 +38,8 @@
   vscodeSettings = {
     # "vscode-kubernetes.helm-path" = "${pkgs.helm}/bin/helm";
     "vscode-kubernetes.kubectl-path" = "${pkgs.kubectl}/bin/kubectl";
+
+    # Disable telemetry for redhat extensions
+    "redhat.telemetry.enabled" = false;
   };
 }

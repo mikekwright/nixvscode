@@ -17,6 +17,11 @@
     # "editor.fontFamily" = "Fira Code, monospace";
     # "terminal.integrated.fontFamily" = "'Fira Code', monospace";
 
+    # Disable telemetry
+    "telemetry.feedback.enabled" = false;
+    "telemetry.telemetryLevel" = "off";
+    "editor.experimental.treeSitterTelemetry" = false;
+
     "explorer.excludeGitIgnore" = true;
     "editor.insertSpaces" = true;
     "editor.detectIndentation" = false;

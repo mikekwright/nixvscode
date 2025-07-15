@@ -6,4 +6,9 @@
     #    https://marketplace.visualstudio.com/items?itemName=humao.rest-client
     (funcs.safePkg vscode-marketplace [ "humao" "rest-client" ])
   ];
+
+  vscodeSettings = {
+    # Disable telemetry for the rest-client extension
+    "rest-client.enableTelemetry" = false;
+  };
 }

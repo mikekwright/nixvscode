@@ -6,4 +6,9 @@
     #    https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
     (funcs.safePkg vscode-marketplace-release [ "eamodio" "gitlens" ])
   ];
+
+  vscodeSettings = {
+    # Disable telemetry for gitlens
+    "gitlens.telemetry.enabled" = false;
+  };
 }

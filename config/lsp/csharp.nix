@@ -27,6 +27,8 @@
     "omnisharp.useModernNet" = true;
     "omnisharp.enableEditorConfigSupport" = true;
     "omnisharp.autoStart" = true;
+
+    "dotnetAcquisitionExtension.enableTelemetry" = false;
   };
 
   packages = with pkgs; [

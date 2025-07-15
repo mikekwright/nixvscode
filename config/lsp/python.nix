@@ -101,5 +101,7 @@
       "convertFormatString" = true;
       "generateSymbol" = true;
     };
+
+    "python.analysis.reportExtraTelemetry" = false;
   };
 }
