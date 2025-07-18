@@ -1,38 +1,33 @@
 { funcs, ... }:
 
 {
-  keybindings = with funcs; [
+  keybindings = [
     #
     # Vim = File and Editor Management
     #
-    (vimKey {
+    (funcs.editorVimBinding{
       key = ", e n";
       command = "workbench.action.files.newUntitledFile";
-      when = [ when.vim-editor ];
     })
 
-    (vimKey {
+    (funcs.editorVimBinding {
       key = ", e s";
       command = "workbench.action.files.save";
-      when = [ when.vim-editor ];
     })
 
-    (vimKey {
+    (funcs.editorVimBinding {
       key = ", e u";
       command = "workbench.action.files.revert";
-      when = [ when.vim-editor ];
     })
 
-    (vimKey {
+    (funcs.editorVimBinding {
       key = ", e d";
       command = "workbench.action.closeActiveEditor";
-      when = [ when.vim-editor ];
     })
 
-    (vimKey {
+    (funcs.editorVimBinding {
       key = ", e c";
       command = "workbench.action.closeSidebar";
-      when = [ when.vim-editor ];
     })
   ];
 }

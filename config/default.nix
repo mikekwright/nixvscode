@@ -176,7 +176,6 @@
     #"terminal.integrated.fontFamily" = "monospace";
   };
 
-
   packages = with pkgs; [
     cloc
   ];
@@ -189,30 +188,6 @@
       key = "ctrl+w o";
       command = "workbench.action.closeOtherEditors";
       when = "editorFocus";
-    }
-
-    {
-      key = "ctrl+h";
-      command = "workbench.action.terminal.focusPreviousPane";
-      when = "terminalFocus";
-    }
-
-    {
-      key = "ctrl+j";
-      command = "workbench.action.focusActiveEditorGroup";
-      when = "terminalFocus";
-    }
-
-    {
-      key = "ctrl+k";
-      command = "workbench.action.focusActiveEditorGroup";
-      when = "terminalFocus";
-    }
-
-    {
-      key = "ctrl+l";
-      command = "workbench.action.terminal.focusNextPane";
-      when = "terminalFocus";
     }
 
     {
@@ -275,81 +250,6 @@
       key = "ctrl+w k";
       command = "workbench.action.navigateUp";
       when = "terminalFocus";
-    }
-
-
-    #
-    # File Explorer
-    #
-    {
-      key = "m a";
-      command = "explorer.newFolder";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "f";
-      command = "explorer.newFolder";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "n";
-      command = "explorer.newFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "a";
-      command = "explorer.newFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "m n";
-      command = "explorer.newFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "m d";
-      command = "deleteFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "d";
-      command = "deleteFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "r";
-      command = "renameFile";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "x";
-      command = "filesExplorer.cut";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "c";
-      command = "filesExplorer.copy";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "v";
-      command = "filesExplorer.paste";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "p";
-      command = "filesExplorer.paste";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "m o";
-      command = "explorer.openToSide";
-      when = "filesExplorerFocus && !inputFocus";
-    }
-    {
-      key = "o";
-      command = "explorer.openToSide";
-      when = "filesExplorerFocus && !inputFocus";
     }
 
     #
@@ -438,10 +338,7 @@
     #   command = "workbench.action.focusActiveEditorGroup";
     #   when = "terminalFocus"
     # }
-    {
-      key = "ctrl+w";
-      command = "-workbench.action.closeActiveEditor";
-    }
+
     {
       key = "s";
       command = "explorer.openToSide";

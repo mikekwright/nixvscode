@@ -7,15 +7,18 @@ rec {
   # These are the different combinations to consider for the flow we are using
   when = rec {
     editor = "editorTextFocus";
-    vim = "vim.active && vim.mode != 'Insert'";
+    vim = "vim.active && vim.mode == 'Normal'";
+    vim-visual = "vim.active && vim.mode == 'Visual'";
     vim-editor = "${editor} && ${vim}";
     copilot = "!github.copilot.interactiveSession.disabled";
     can-debug = "debuggersAvailable";
     in-debug = "inDebugMode";
     not-debug = "!inDebugMode";
+    in-explorer = "filesExplorerFocus";
     file-explorer = "explorerViewletVisible && !github.copilot.interactiveSession.disabled";
     terminal = "terminalFocus && !github.copilot.interactiveSession.disabled";
     language = lang: "editorLangId == '${lang}'";
+    sidebar-visible = "sideBarVisible";
   };
 
   vimKey = { key, command, when ? [] }: {
@@ -27,12 +30,12 @@ rec {
   vimKeys = { key, command, when-list ? [] }:
     map (x: (vimKey { key = key; command = command; when = x; })) when-list;
 
-  editorVimBinding = { key, command, }: (vimKey {
+  editorVimBinding = with when; { key, command, when ? [] }: (vimKey {
     inherit key command;
 
     when = [
-      when.vim-editor
-    ];
+      vim-editor
+    ] ++ when;
   });
 
   inDebugBinding = { key, command }: (vimKey {

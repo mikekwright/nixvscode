@@ -1,85 +1,98 @@
-{ ... }:
+{ funcs, ... }:
 
 {
   keybindings = [
     #
     # Vim = Code inspection and formatting
-    #
-    {
+    #   (These did have !editorReadonly, but going to test without)
+    (funcs.vimKey {
       key = ", k c";
       command = "editor.action.commentLine";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+      when = [
+        funcs.when.vim-visual
+        funcs.when.editor
+      ];
+    })
+    (funcs.vimKey {
       key = ", k u";
       command = "editor.action.removeCommentLine";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+      when = [
+        funcs.when.vim-visual
+        funcs.when.editor
+      ];
+    })
+
+    (funcs.editorVimBinding {
+      key = ", g t";
+      command = "workbench.action.gotoSymbol";
+    })
+
+    (funcs.editorVimBinding {
+      key = ", g h";
+      command = "editor.action.quickFix";
+    })
+
+    (funcs.editorVimBinding {
+      key = ", g b";
+      command = "workbench.action.navigateBack";
+    })
+
+    (funcs.editorVimBinding {
+      key = ", g f";
+      command = "workbench.action.navigateForward";
+    })
+
+    (funcs.editorVimBinding {
       key = ", l r";
       command = "editor.action.rename";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l shift+r";
       command = "editor.action.referenceSearch.trigger";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l c";
       command = "editor.action.referenceSearch.trigger";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l shift+c";
       command = "editor.action.showOutgoingCalls";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l d";
       command = "editor.action.revealDefinition";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l shift+d";
       command = "editor.action.revealDeclaration";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l shift+s";
       command = "workbench.action.showAllSymbols";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l t";
       command = "editor.action.goToTypeDefinition";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l v";
       command = "workbench.action.showAllSymbols";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l w";
       command = "workbench.action.showAllSymbols";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l f";
       command = "editor.action.formatDocument";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l i";
       command = "editor.action.organizeImports";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
-    {
+    })
+    (funcs.editorVimBinding {
       key = ", l l";
       command = "editor.action.quickFix";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !editorReadonly";
-    }
+    })
   ];
 }

@@ -1,50 +1,43 @@
-{ ... }:
+{ funcs, ... }:
 
 {
   keybindings = [
     #
     # Vim = Bookmarks
     #
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.toggle";
       key = ", b b";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert' && !chatInputHasFocus";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.listFromAllFiles";
       key = ", b l";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.list";
       key = ", b shift+l";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.clear";
       key = ", b d";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.jumpToNext";
       key = ", b n";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarks.jumpToPrevious";
       key = ", b p";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
 
-    {
+    (funcs.editorVimBinding {
       command = "bookmarksExplorer.open";
       key = ", b e";
-      when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
-    }
+    })
   ];
 }
