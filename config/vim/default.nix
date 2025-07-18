@@ -24,6 +24,12 @@
     "vim.disableExtension" = false;
   };
 
+  # I should look at adjusting this configuration to work with the vim solution and its
+  #   called out modes instead of manually added keybindings
+  # "vim.insertModeKeyBindings"/"vim.normalModeKeyBindings"/"vim.visualModeKeyBindings"/"vim.operatorPendingModeKeyBindings"
+  #
+  # https://github.com/VSCodeVim/Vim#key-remapping
+  #
   keybindings = [
   ];
 }
