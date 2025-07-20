@@ -11,8 +11,10 @@ let
 
   # This is the other way (supposedly) to use the extensions, but I am going
   #   to land on just the overlaps to start
-  vscode-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
-  void-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.99";
+  # vscode-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.101.2";
+  vscode-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion extra-pkgs.versions.vscode;
+  # void-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion "1.99";
+  void-extensions = pkgs.nix-vscode-extensions.forVSCodeVersion extra-pkgs.versions.void;
 in {
   makeModule = config-start: rec {
 

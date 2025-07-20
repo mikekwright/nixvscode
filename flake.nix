@@ -3,11 +3,14 @@
 
   inputs = {
     # This is from stable on July 6th, 2025
-    nixpkgs.url = "github:nixos/nixpkgs/8c14393fb2fb05dce014798d834c174f6bf94f3f";
+    # nixpkgs.url = "github:nixos/nixpkgs/8c14393fb2fb05dce014798d834c174f6bf94f3f";
+    nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
 
     # Version 1.101.2 - July 1st, 2025
     #   If you update to use a different version, update the below extensions as well
-    vscode-nixpkgs.url = "github:nixos/nixpkgs/b32441ec0fae600e647cf4e6d6c245286a583106";
+    #vscode-nixpkgs.url = "github:nixos/nixpkgs/b32441ec0fae600e647cf4e6d6c245286a583106";
+    vscode-nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
+    
 
     # This input includes most of the extensions that are included in the vscode
     #   flow.  While we won't be using the actual vscodium that comes from this
@@ -50,6 +53,11 @@
           vscode-pkg = import inputs.vscode-nixpkgs {
             inherit system;
             config.allowUnfree = true;
+          };
+
+          versions = {
+            vscode = "1.102.1";
+            void = "1.99";
           };
         };
 
