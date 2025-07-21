@@ -23,6 +23,12 @@
     })
 
     (funcs.editorVimBinding {
+      key = ", l h";
+      command = "editor.action.showHover";
+    })
+
+
+    (funcs.editorVimBinding {
       key = ", k c";
       command = "editor.action.commentLine";
     })
