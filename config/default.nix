@@ -183,7 +183,16 @@
   #vscodeExtensions = with pkgs; [
   #];
 
-  keybindings = [
+  keybindings = with funcs; [
+    (vimKey {
+      key = "ctrl+w q";
+      command = "workbench.action.closeSidebar";
+      when = [
+        when.sidebar-visible
+        when.in-sidebar
+      ];
+    })
+
     {
       key = "ctrl+w o";
       command = "workbench.action.closeOtherEditors";

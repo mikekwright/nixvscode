@@ -19,6 +19,7 @@ rec {
     terminal = "terminalFocus && !github.copilot.interactiveSession.disabled";
     language = lang: "editorLangId == '${lang}'";
     sidebar-visible = "sideBarVisible";
+    in-sidebar = "sideBarFocus";
   };
 
   vimKey = { key, command, when ? [] }: {
