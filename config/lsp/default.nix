@@ -41,6 +41,9 @@
   ];
 
   aiGenerationInstructions = funcs.buildAiInstructions [
+    "Never use single variable name, except for i and j in loops."
+    "Focus on self documenting code that is easy to read and understand."
+    "Avoid adding comments that explain what the code does; instead, write code that is clear and understandable on its own."
     "Avoid unnecessary complexity and strive for simplicity."
     "Ensure code is self-documenting through clear naming and small functions."
     "Avoid premature optimization; focus on clarity first."
