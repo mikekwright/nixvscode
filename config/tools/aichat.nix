@@ -108,6 +108,27 @@
       command = "workbench.action.chat.toggle";
     })
 
+    # Toggle the chat window fullscreen experience
+    {
+      key = "ctrl+w f";
+      # command = "workbench.action.maximizeAuxiliaryBar";
+      command = "workbench.action.toggleMaximizedAuxiliaryBar";
+      when = "!auxiliaryBarMaximized && chatInputHasFocus";
+    }
+    {
+      key = "ctrl+w f";
+      # command = "workbench.action.restoreAuxiliaryBar";
+      # command = "workbench.action.toggleMaximizedAuxiliaryBar";
+      command = "runCommands";
+      args = {
+        commands = [
+          "workbench.action.toggleMaximizedAuxiliaryBar"
+          "workbench.action.chat.focusInput"
+        ];
+      };
+      when = "auxiliaryBarMaximized";
+    }
+
     {
       key = "ctrl+c";
       command = "workbench.action.chat.toggle";

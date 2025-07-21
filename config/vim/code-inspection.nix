@@ -23,6 +23,17 @@
     })
 
     (funcs.editorVimBinding {
+      key = ", k c";
+      command = "editor.action.commentLine";
+    })
+
+    (funcs.editorVimBinding {
+      key = ", k u";
+      command = "editor.action.removeCommentLine";
+    })
+
+
+    (funcs.editorVimBinding {
       key = ", g t";
       command = "workbench.action.gotoSymbol";
     })
