@@ -56,5 +56,17 @@
         when.terminal
       ];
     })
+
+    (vimKey {
+      key = "ctrl+t";
+      command = "workbench.action.terminal.toggleTerminal";
+      # In all context, so no when clause
+    })
+
+    {
+      key = "ctrl+w k";
+      command = "workbench.action.navigateUp";
+      when = "terminalFocus";
+    }
   ];
 }

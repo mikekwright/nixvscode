@@ -251,15 +251,7 @@
       key = "ctrl+w k";
       command = "workbench.action.navigateUp";
     }
-    {
-      key = "ctrl+t";
-      command = "workbench.action.terminal.toggleTerminal";
-    }
-    {
-      key = "ctrl+w k";
-      command = "workbench.action.navigateUp";
-      when = "terminalFocus";
-    }
+
 
     #
     #

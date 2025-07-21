@@ -108,9 +108,8 @@
       command = "workbench.action.chat.toggle";
     })
 
-    (vimKey {
+    (runCommands {
       key = ", a a";
-      command = "runCommands";
       args = {
         commands = [
           "workbench.action.chat.openAgent"

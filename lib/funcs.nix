@@ -16,32 +16,40 @@ rec {
     in-debug = "inDebugMode";
     not-debug = "!inDebugMode";
     in-explorer = "filesExplorerFocus";
-    file-explorer = "explorerViewletVisible && !github.copilot.interactiveSession.disabled";
-    terminal = "terminalFocus && !github.copilot.interactiveSession.disabled";
+    file-explorer = "explorerViewletVisible";
+    terminal = "terminalFocus";
     language = lang: "editorLangId == '${lang}'";
     sidebar-visible = "sideBarVisible";
     in-sidebar = "sideBarFocus";
   };
 
-  vimKey = { key, command, when ? [], args ? null }: {
-    inherit key command args;
+  # If args is added to some commands, they will fail when args is null.  Be explicit if
+  #  needed
+  runCommands = { key, args, when ? [] }: {
+    inherit key args;
+    command = "runCommands";
+    when = builtins.concatStringsSep " && " (map (x: "${x}") when);
+  };
+
+  vimKey = { key, command, when ? [] }: {
+    inherit key command;
 
     when = builtins.concatStringsSep " && " (map (x: "${x}") when);
   };
 
-  vimKeys = { key, command, args ? null, when-list ? [] }:
-    map (x: (vimKey { key = key; command = command; when = x; args = args; })) when-list;
+  vimKeys = { key, command, when-list ? [] }:
+    map (x: (vimKey { key = key; command = command; when = x; })) when-list;
 
-  editorVimBinding = with when; { key, command, args ? null, when ? [] }: (vimKey {
-    inherit key command args;
+  editorVimBinding = with when; { key, command, when ? [] }: (vimKey {
+    inherit key command;
 
     when = [
       vim-editor
     ] ++ when;
   });
 
-  inDebugBinding = { key, command, args ? null }: (vimKey {
-    inherit key command args;
+  inDebugBinding = { key, command }: (vimKey {
+    inherit key command;
 
     when = [
       when.in-debug
@@ -49,8 +57,8 @@ rec {
     ];
   });
 
-  languageVimBinding = { lang, key, command, args ? null }: (vimKey {
-    inherit key command args;
+  languageVimBinding = { lang, key, command }: (vimKey {
+    inherit key command;
 
     when = [
       (when.language lang)
