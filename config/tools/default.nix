@@ -5,24 +5,24 @@
 
   imports = [
     ./aichat.nix
-    #./sqlite.nix
     ./dbcode.nix
+    ./file-explorer.nix
     ./gitlens.nix
+
     ./kubernetes.nix
-    ./rest-client.nix
     ./nginx.nix
-
-    ./workspace.nix
-    ./terminal.nix
-
     ./ollama.nix
+
+    ./rest-client.nix
+    ./sqlite.nix
+    ./terminal.nix
 
     # This does not work
     # ./whichkey.nix
+    ./workspace.nix
   ];
 
   packages = with pkgs; [
     lazygit
   ];
 }
-

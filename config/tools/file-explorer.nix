@@ -9,7 +9,7 @@
       key = ", e e";
       command = "workbench.action.toggleSidebarVisibility";
       when = [
-        when.in-filexplorer
+        when.in-explorer
       ];
     })
 
@@ -20,6 +20,7 @@
         when.sidebar-visible
       ];
     })
+
     (editorVimBinding {
       key = ", e e";
       command = "workbench.files.action.focusFilesExplorer";
