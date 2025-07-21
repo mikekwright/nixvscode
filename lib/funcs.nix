@@ -11,6 +11,7 @@ rec {
     vim-visual = "vim.active && vim.mode == 'Visual'";
     vim-editor = "${editor} && ${vim}";
     copilot = "!github.copilot.interactiveSession.disabled";
+    chat-enabled = "chatIsEnabled";
     can-debug = "debuggersAvailable";
     in-debug = "inDebugMode";
     not-debug = "!inDebugMode";
@@ -22,25 +23,25 @@ rec {
     in-sidebar = "sideBarFocus";
   };
 
-  vimKey = { key, command, when ? [] }: {
-    inherit key command;
+  vimKey = { key, command, when ? [], args ? null }: {
+    inherit key command args;
 
     when = builtins.concatStringsSep " && " (map (x: "${x}") when);
   };
 
-  vimKeys = { key, command, when-list ? [] }:
-    map (x: (vimKey { key = key; command = command; when = x; })) when-list;
+  vimKeys = { key, command, args ? null, when-list ? [] }:
+    map (x: (vimKey { key = key; command = command; when = x; args = args; })) when-list;
 
-  editorVimBinding = with when; { key, command, when ? [] }: (vimKey {
-    inherit key command;
+  editorVimBinding = with when; { key, command, args ? null, when ? [] }: (vimKey {
+    inherit key command args;
 
     when = [
       vim-editor
     ] ++ when;
   });
 
-  inDebugBinding = { key, command }: (vimKey {
-    inherit key command;
+  inDebugBinding = { key, command, args ? null }: (vimKey {
+    inherit key command args;
 
     when = [
       when.in-debug
@@ -48,8 +49,8 @@ rec {
     ];
   });
 
-  languageVimBinding = { lang, key, command }: (vimKey {
-    inherit key command;
+  languageVimBinding = { lang, key, command, args ? null }: (vimKey {
+    inherit key command args;
 
     when = [
       (when.language lang)

@@ -59,53 +59,70 @@
     ];
   };
 
-  keybindings = [
+  keybindings = with funcs; [
     #
     # VSCode AI Chat and support shortcuts
     #
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a a";
       command = "workbench.action.chat.openAgent";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a e";
       command = "github.copilot.chat.explain.palette";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a r";
       command = "github.copilot.chat.review";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a f";
       command = "github.copilot.chat.fix";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a g t";
       command = "github.copilot.chat.generateTests";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a g c";
       command = "github.copilot.chat.generate";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a g d";
       command = "github.copilot.chat.generateDocs";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a h";
       command = "editor.action.showHover";
     })
 
-    (funcs.editorVimBinding {
+    (editorVimBinding {
       key = ", a c";
       command = "workbench.action.chat.toggle";
+    })
+
+    (vimKey {
+      key = ", a a";
+      command = "runCommands";
+      args = {
+        commands = [
+          "workbench.action.chat.openAgent"
+          "workbench.action.chat.attachSelection"
+          "workbench.action.chat.focusInput"
+        ];
+      };
+      when = [
+        when.editor
+        when.vim-visual
+        when.chat-enabled
+      ];
     })
 
     # Toggle the chat window fullscreen experience
