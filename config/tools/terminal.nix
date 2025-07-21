@@ -21,7 +21,7 @@
       key = "ctrl+w c";
       command = "extension.terminalCapture.runCapture";
       when = [
-        when.terminal
+        when.in-terminal
       ];
     })
 
@@ -29,7 +29,7 @@
       key = "ctrl+h";
       command = "workbench.action.terminal.focusPreviousPane";
       when = [
-        when.terminal
+        when.in-terminal
       ];
     })
 
@@ -37,7 +37,7 @@
       key = "ctrl+j";
       command = "workbench.action.focusActiveEditorGroup";
       when = [
-        when.terminal
+        when.in-terminal
       ];
     })
 
@@ -45,7 +45,7 @@
       key = "ctrl+k";
       command = "workbench.action.focusActiveEditorGroup";
       when = [
-        when.terminal
+        when.in-terminal
       ];
     })
 
@@ -53,7 +53,7 @@
       key = "ctrl+l";
       command = "workbench.action.terminal.focusNextPane";
       when = [
-        when.terminal
+        when.in-terminal
       ];
     })
 
@@ -63,10 +63,25 @@
       # In all context, so no when clause
     })
 
+    (vimKey {
+      key = "ctrl+q";
+      command = "workbench.action.terminal.toggleTerminal";
+      when = [
+        when.in-terminal
+      ];
+    })
+
     {
       key = "ctrl+w k";
       command = "workbench.action.navigateUp";
       when = "terminalFocus";
     }
+
+    # TODO: At some point it would be nice to have terminalEditor commands in place
+    #   I just have to think about how I would use them
+    #  when = terminalEditorFocus   terminalFocusInAny
+    #  command = "workbench.action.terminal.moveToEditor"
+    #  command = "workbench.action.terminal.killViewOrEditor"
+    #  command = ...
   ];
 }

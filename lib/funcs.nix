@@ -11,13 +11,14 @@ rec {
     vim-visual = "vim.active && vim.mode == 'Visual'";
     vim-editor = "${editor} && ${vim}";
     copilot = "!github.copilot.interactiveSession.disabled";
+    in-chat = "chatInputHasFocus";
     chat-enabled = "chatIsEnabled";
     can-debug = "debuggersAvailable";
     in-debug = "inDebugMode";
     not-debug = "!inDebugMode";
     in-explorer = "filesExplorerFocus";
     file-explorer = "explorerViewletVisible";
-    terminal = "terminalFocus";
+    in-terminal = "terminalFocus";
     language = lang: "editorLangId == '${lang}'";
     sidebar-visible = "sideBarVisible";
     in-sidebar = "sideBarFocus";

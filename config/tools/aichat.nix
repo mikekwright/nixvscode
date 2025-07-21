@@ -68,6 +68,22 @@
       command = "workbench.action.chat.openAgent";
     })
 
+    (vimKey {
+      key = "ctrl+a";
+      command = "workbench.action.chat.toggle";
+      when = [
+        when.in-chat
+      ];
+    })
+
+    (vimKey {
+      key = "ctrl+q";
+      command = "workbench.action.chat.toggle";
+      when = [
+        when.in-chat
+      ];
+    })
+
     (editorVimBinding {
       key = ", a e";
       command = "github.copilot.chat.explain.palette";
