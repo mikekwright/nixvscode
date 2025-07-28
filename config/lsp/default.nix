@@ -7,30 +7,30 @@
     # This is not currently working
     #./cobol.nix
 
-    ./cplusplus.nix
-    ./csharp.nix
+    #./cplusplus.nix
+    #./csharp.nix
 
-    ./dart.nix
-    ./dlang.nix
-    ./erlang.nix
-    ./golang.nix
+    #./dart.nix
+    #./dlang.nix
+    #./erlang.nix
+    #./golang.nix
 
-    ./haskell.nix
-    ./java.nix
-    ./lua.nix
+    #./haskell.nix
+    #./java.nix
+    #./lua.nix
     ./markdown.nix
     ./nix.nix
 
-    ./ocaml.nix
+    #./ocaml.nix
     ./python.nix
-    ./ruby.nix
+    #./ruby.nix
     ./rust.nix
 
-    ./scala.nix
+    #./scala.nix
     ./shell.nix
-    ./terraform.nix
+    #./terraform.nix
     ./typescript.nix
-    ./zig.nix
+    #./zig.nix
   ];
 
   packages = with pkgs; [
