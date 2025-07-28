@@ -10,7 +10,12 @@
     # This is the extension for eslint support in vscode
     #    https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
     (funcs.safePkg vscode-marketplace [ "dbaeumer" "vscode-eslint" ])
+
+    # React Native tools (from microsoft)
+    #    https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native
+    (funcs.safePkg vscode-marketplace [ "msjsdiag" "vscode-react-native" ])
   ];
+
 
   packages = with pkgs; [
     eslint_d
