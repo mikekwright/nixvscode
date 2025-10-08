@@ -60,7 +60,7 @@
 
       "editor.codeActionsOnSave" = {
         "source.fixAll" = "explicit";
-        "source.organizeImports" = "explicit";
+        "source.organizeImports" = "never";
       };
     };
 
@@ -71,7 +71,7 @@
     "notebook.formatOnSave.enabled" = true;
     "notebook.codeActionsOnSave" = {
       "notebook.source.fixAll" = "explicit";
-      "notebook.source.organizeImports" = "explicit";
+      "notebook.source.organizeImports" = "never";
     };
 
     "python.languageServer" = "Pylance";
@@ -92,7 +92,7 @@
     "python.experiments.enabled" = false;
 
     "python.analysis.fixAll" = [
-      "source.unusedImports"
+      # "source.unusedImports"
       "source.convertImportFormat"
     ];
 

@@ -6,18 +6,19 @@
     # nixpkgs.url = "github:nixos/nixpkgs/8c14393fb2fb05dce014798d834c174f6bf94f3f";
     nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
 
-    # Version 1.104.1 - September 2025
     #   If you update to use a different version, update the below extensions as well
-    #vscode-nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
-    vscode-nixpkgs.url = "github:nixos/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01";
+    vscode-nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
+    # Version 1.104.1 - September 2025  (issue with chat trying to write to extension directory)
+    # vscode-nixpkgs.url = "github:nixos/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01";
     
     # This input includes most of the extensions that are included in the vscode
     #   flow.  While we won't be using the actual vscodium that comes from this
     #   solution, we will use it to help us manage the different extensions that
     #   we want to use.
     nix-vscode-extensions = {
-      # url = "github:nix-community/nix-vscode-extensions/22a438cd9316db32acde1019382f25e110453fb2";
-      url = "github:nix-community/nix-vscode-extensions/a87f796f1ed4b0a8babe9370791a66aac4864887";
+      url = "github:nix-community/nix-vscode-extensions/22a438cd9316db32acde1019382f25e110453fb2";
+      # This version is for 104.1 (which isn't working)
+      # url = "github:nix-community/nix-vscode-extensions/a87f796f1ed4b0a8babe9370791a66aac4864887";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
