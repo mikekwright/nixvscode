@@ -1,4 +1,4 @@
-{ pkgs, extra-pkgs, funcs, options, ... }:
+{ pkgs, extra-pkgs, funcs, options, system, ... }:
 
 {
   # NOTE: This requires the C/C++ extensions be included for the
@@ -9,8 +9,11 @@
     (funcs.safePkg vscode-marketplace [ "platformio" "platformio-ide" ])
   ];
 
-  packages = options.packages "tools.platformio" [
-  ];
+  packages = with pkgs; options.packages "tools.platformio" [
+    platformio-core
+  ] ++ (if (builtins.elem system pkgs.lib.platforms.linux) then [
+    platformio
+  ] else [ ]);
 
   vscodeSettings = {
     # "[nginx]" = {
