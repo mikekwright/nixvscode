@@ -21,7 +21,7 @@
 
   packages = with pkgs; [
     # This is another container tool that can be used
-    buildah
+    # buildah
 
     # Using helm management as well
     #helm
