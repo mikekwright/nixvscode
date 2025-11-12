@@ -11,32 +11,32 @@ The repository structure is being configured so that it can include
 multiple different "profiles" of the vscode solution so that it will
 only run and include the specific parts desired.
 
-root
-├─ samples
-│   ├── cplusplus
-│   ├── dlang
-│   ├── golang
-│   └── ...
-├─ lib
-│   └── editors
-├─ docs
-│   └── ...
-├─ packages
-│   ├── minimal
-│   ├── complete
-│   ├── python
-│   ├── frontend
-│   ├── mobile
-│   └── ...
-├─ options
-│   ├── lsp
-│   ├── tools
-│   └── ...
-└─ common
-    ├── theme
-    ├── tools
-    ├── shortcuts
-    └── ...
+root  
+├─ samples  
+│   ├── cplusplus  
+│   ├── dlang  
+│   ├── golang  
+│   └── ...  
+├─ lib  
+│   └── editors  
+├─ docs  
+│   └── ...  
+├─ packages  
+│   ├── minimal  
+│   ├── complete  
+│   ├── python  
+│   ├── frontend  
+│   ├── mobile  
+│   └── ...  
+├─ options  
+│   ├── lsp  
+│   ├── tools  
+│   └── ...  
+└─ common  
+    ├── theme  
+    ├── tools  
+    ├── shortcuts  
+    └── ...  
 
 Each of the main sections has a specific purpose and we will outline those below.
 
