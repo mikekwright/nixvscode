@@ -59,6 +59,26 @@ nix run https://github.com/mikekwright/nixvscode#void
 }
 ```
 
+Upgrading the version
+----------------------------------------
+
+When you want to upgrade the version of the software to work through there are a few things
+that will need to done.
+
+* Upgrade the different inputs for the flake
+  * [Nixpkgs - Unstable Branch](https://github.com/NixOS/nixpkgs/commits/nixos-unstable/)
+  * [VSCode-NixPkgs](https://www.nixhub.io/packages/vscode)
+  * [nix-vscode-extensions](https://github.com/nix-community/nix-vscode-extensions)
+  * [flake-parts (Optional)](https://github.com/hercules-ci/flake-parts/commits/main/)
+
+* Upgrade the target version in the `flake.nix` section
+
+  ```nix
+  versions = {
+      vscode = "...";
+  };
+  ```
+
 References
 ----------------------------------------
 

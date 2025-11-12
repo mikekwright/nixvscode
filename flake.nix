@@ -2,28 +2,24 @@
   description = "A VSCode flake with extensions and settings";
 
   inputs = {
-    # This is from stable on July 6th, 2025
-    # nixpkgs.url = "github:nixos/nixpkgs/8c14393fb2fb05dce014798d834c174f6bf94f3f";
-    nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
+    # nixos-unstable: November 8th, 2025
+    nixpkgs.url = "github:nixos/nixpkgs/b6a8526db03f735b89dd5ff348f53f752e7ddc8e";
 
-    #   If you update to use a different version, update the below extensions as well
-    vscode-nixpkgs.url = "github:nixos/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec";
-    # Version 1.104.1 - September 2025  (issue with chat trying to write to extension directory)
-    # vscode-nixpkgs.url = "github:nixos/nixpkgs/12bd230118a1901a4a5d393f9f56b6ad7e571d01";
+    # Version 1.105.1 - October 20th 2025
+    vscode-nixpkgs.url = "github:nixos/nixpkgs/d5faa84122bc0a1fd5d378492efce4e289f8eac1";
     
     # This input includes most of the extensions that are included in the vscode
     #   flow.  While we won't be using the actual vscodium that comes from this
     #   solution, we will use it to help us manage the different extensions that
     #   we want to use.
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/22a438cd9316db32acde1019382f25e110453fb2";
-      # This version is for 104.1 (which isn't working)
-      # url = "github:nix-community/nix-vscode-extensions/a87f796f1ed4b0a8babe9370791a66aac4864887";
+      # master: November 11th, 2025
+      url = "github:nix-community/nix-vscode-extensions/6110f762f238177ba231e8726fabcf4706c9c378";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Flake parts for 2025-02-08
-    flake-parts.url = "github:hercules-ci/flake-parts/32ea77a06711b758da0ad9bd6a844c5740a87abd";
+    # main: November 10th, 2025
+    flake-parts.url = "github:hercules-ci/flake-parts/0bdadb1b265fb4143a75bd1ec7d8c915898a9923";
   };
 
   outputs = {
@@ -45,7 +41,9 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [ inputs.nix-vscode-extensions.overlays.default ];
+          overlays = [ 
+            inputs.nix-vscode-extensions.overlays.default
+          ];
         };
 
         # This should go away at some point
@@ -56,8 +54,7 @@
           };
 
           versions = {
-            vscode = "1.102.1";
-            void = "1.99";
+            vscode = "1.105.1";
           };
         };
 
@@ -65,21 +62,17 @@
         funcs = import ./lib/funcs.nix {inherit debug extra-pkgs pkgs system;};
         lib = import ./lib/importer.nix {inherit debug extra-pkgs pkgs system funcs;};
 
-        # vscodeModule = {
-        #   inherit pkgs extra-pkgs;
-        #   # module = import ./config; # import the module directly
+        combined_includes = { ... }: {
+          imports = [
+            ./common
+            ./options
+          ];
+        };
 
-        #   # You can use `extraSpecialArgs` to pass additional arguments to your module files
-        #   extraSpecialArgs = {
-        #     inherit inputs system pkgs debug extra-pkgs funcs;
-        #   };
-        # };
-        flake-pkgs = lib.makeModule ./config;
-        #   {
-        #   voidpkg = pkgs.vscode;
-        #   codepkg = pkgs.vscode;
-        # };
-          #lib.makeModule vscodeModule;
+        complete-includes = import ./packages/complete.nix {inherit lib;};
+        minimal-includes = import ./packages/minimal.nix {inherit lib;};
+        python-includes = import ./packages/python.nix {inherit lib;};
+        typescript-includes = import ./packages/typescript.nix {inherit lib;};
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
@@ -88,13 +81,14 @@
         };
 
         packages = rec {
-          void = flake-pkgs.voidpkg;
-          code = flake-pkgs.codepkg;
+          complete = (lib.makeModule complete-includes combined_includes).codepkg;
+          minimal = (lib.makeModule minimal-includes combined_includes).codepkg;
+          python = (lib.makeModule python-includes combined_includes).codepkg;
+          typescript = (lib.makeModule typescript-includes combined_includes).codepkg;
 
           # Lets you run `nix run .` to start custom vscode
-          default = code;
+          default = minimal;
         };
       };
     };
 }
-
